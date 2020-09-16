@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="chinese_week_string_array">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+
+    <string-array name="zhou_chinese_week_string_array">
+        <item>周日</item>
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
+    </string-array>
+
+    <string-array name="add_approve_leave_one_day_array">
+        <item></item>
+        <item>0.5</item>
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>8</item>
+        <item>12</item>
+    </string-array>
+
+    <array name="memorandum_pending_remind_time_interval">
+        <item>请选择</item>
+        <item>5分钟后</item>
+        <item>10分钟后</item>
+        <item>15分钟后</item>
+        <item>30分钟后</item>
+        <item>1小时后</item>
+        <item>2小时后</item>
+        <item>4小时后</item>
+        <item>8小时后</item>
+    </array>
+
+</resources>

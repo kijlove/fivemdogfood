@@ -1,0 +1,111 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-noarg'
+apply plugin: 'kotlin-allopen'
+apply plugin: 'kotlin-android-extensions'
+// 调用MobTech SDK
+apply plugin: 'com.mob.sdk'
+MobSDK {
+    appKey "114a14baf5f44"
+    appSecret "5266cbcd2ae06e3f232f01a8ad3993a2"
+
+    // 调用MobPush
+    MobPush {}
+}
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "com.kijlee.wb.fivemdogfood"
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //上网交互用到的类
+    implementation 'me.jessyan:retrofit-url-manager:1.4.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.3'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //图片下载
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    //万能recyclerview适配器
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    //数据库
+    implementation 'org.litepal.android:kotlin:3.0.0'
+
+    //下载文件用到的类库
+    implementation 'com.arialyy.aria:core:3.8.5'
+    implementation 'com.google.android.material:material:1.3.0-alpha02'
+    kapt 'com.arialyy.aria:compiler:3.8.5'
+    implementation 'com.arialyy.aria:ftpComponent:3.8.5'// # 如果需要使用ftp，请增加该组件
+    implementation 'com.arialyy.aria:sftpComponent:3.8.5'// # 如果需要使用ftp，请增加该组件
+    implementation 'com.arialyy.aria:m3u8Component:3.8.5'// # 如果需要使用m3u8下载功能，请增加该组件
+    //解析jsp网页
+    implementation 'org.jsoup:jsoup:1.11.3'
+    //视频播放类
+
+    //方法数量过大
+    implementation 'com.android.support:multidex:1.0.3'
+    //cookie持久化
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    //日志打印
+    implementation 'com.vise.xiaoyaoyou:viselog:1.1.2'
+    //视频播放类库
+
+    //# 必选，内部默认使用系统mediaplayer进行解码
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-java:3.2.6'
+    //# 可选，包含StandardVideoController的实现
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-ui:3.2.6'
+    //# 可选，使用exoplayer进行解码
+    implementation 'com.github.dueeeke.dkplayer:player-exo:3.2.6'
+    //# 可选，使用ijkplayer进行解码
+    implementation 'com.github.dueeeke.dkplayer:player-ijk:3.2.6'
+    //# 可选，如需要缓存或者抖音预加载功能请引入此库
+    implementation 'com.github.dueeeke.dkplayer:videocache:3.2.6'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+}
+
+noArg {
+    annotation("com.kijlee.wb.fivemdogfood.annotations.NoArgOpenDataClass")
+}
+
+allOpen {
+    annotation("com.kijlee.wb.fivemdogfood.annotations.NoArgOpenDataClass")
+}

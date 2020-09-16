@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">5M狗粮</string>
+    <string name="ShowApiActivity">万维易源</string>
+    <string name="JuheActivity">聚合数据</string>
+    <string name="VideosActivity">视频测试</string>
+</resources>
