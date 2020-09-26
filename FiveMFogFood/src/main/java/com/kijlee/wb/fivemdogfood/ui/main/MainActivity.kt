@@ -1,9 +1,13 @@
 package com.kijlee.wb.fivemdogfood.ui.main
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.kijlee.wb.fivemdogfood.R
 import com.kijlee.wb.fivemdogfood.base.BaseActivity
 import com.kijlee.wb.fivemdogfood.entity.MyApi
@@ -28,14 +32,39 @@ import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
 class MainActivity : BaseActivity() {
+    //检查必要权限
+    var arrayPermission: Array<String> = arrayOf(
+//        Manifest.permission.CALL_PHONE,
+        Manifest.permission.READ_PHONE_STATE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.CAMERA)
+    var mPermissionList: MutableList<String> = ArrayList()//权限list
+    //检查权限
+    private val PERMISSIONS_REQUEST_READ_CONTACTS = 8
 
     var adapter: MyApiAdapter? = null
+    //请求权限sign_norm_activity
+    fun requestPermissions() {
+
+        for (i in arrayPermission) {
+            if (ContextCompat.checkSelfPermission(baseContext, i) != PackageManager.PERMISSION_GRANTED) {
+                mPermissionList.add(i)
+            }
+        }
+        if (mPermissionList.size > 0) {//还有没获取到的权限就继续请求
+            ActivityCompat.requestPermissions(this,
+                arrayPermission,
+                PERMISSIONS_REQUEST_READ_CONTACTS)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MobPush.getRegistrationId { s->
             ViseLog.e("getRegistrationId=====================::" + s.toString())
         }
         MobPush.addPushReceiver(this)
+        requestPermissions()
         setContentView(R.layout.layout_recyclerview)
         adapter = MyApiAdapter(android.R.layout.simple_list_item_1, MyApi.myApiList())
         recyclerView.adapter = adapter

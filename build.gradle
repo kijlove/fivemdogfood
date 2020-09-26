@@ -21,12 +21,16 @@ buildscript {
         // in the individual module build.gradle files
         // 注册MobSDK
         classpath 'com.mob.sdk:MobSDK:+'
+        //Bmob
+        classpath 'com.android.tools.build:gradle:1.2.3'
     }
 }
 
 allprojects {
     repositories {
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        //Bmob的maven仓库地址--必填
+        maven {url 'https://dl.bintray.com/chaozhouzhang/maven' }
         maven { url "https://www.jitpack.io" }
         google()
         jcenter()

@@ -5,13 +5,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.kijlee.wb.fivemdogfood.R
-import com.kijlee.wb.fivemdogfood.entity.juhe.CarType
-import com.kijlee.wb.fivemdogfood.entity.showapi.TnlModleBean
+import com.kijlee.wb.fivemdogfood.entity.juhe.CarBrand
 import com.squareup.picasso.Picasso
 
-class CarTypeAdapter   constructor(resLayout:Int,data:MutableList<CarType>):
-    BaseQuickAdapter<CarType, BaseViewHolder>(resLayout,data) , LoadMoreModule {
-    override fun convert(holder: BaseViewHolder, item: CarType) {
+class CarTypeAdapter   constructor(resLayout:Int,data:MutableList<CarBrand>):
+    BaseQuickAdapter<CarBrand, BaseViewHolder>(resLayout,data) , LoadMoreModule {
+    override fun convert(holder: BaseViewHolder, item: CarBrand) {
         holder!!.setText(R.id.imageName,item.brand_name)
 
         var imageView = holder!!.getView<ImageView>(R.id.imageView)

@@ -4,6 +4,7 @@ import com.kijlee.wb.fivemdogfood.R
 import com.kijlee.wb.fivemdogfood.ui.juhe.JuheActivity
 import com.kijlee.wb.fivemdogfood.ui.showapi.ShowApiActivity
 import com.kijlee.wb.fivemdogfood.ui.videos.VideosActivity
+import com.kijlee.wb.fivemdogfood.ui.fivem.FiveMDogFoodActivity
 import java.io.Serializable
 
 class MyApi constructor(nameRec: Int, activity: Class<*>?):
@@ -20,6 +21,7 @@ class MyApi constructor(nameRec: Int, activity: Class<*>?):
             moduleList.add(MyApi(R.string.ShowApiActivity ,ShowApiActivity::class.java))
             moduleList.add(MyApi(R.string.JuheActivity ,JuheActivity::class.java))
             moduleList.add(MyApi(R.string.VideosActivity , VideosActivity::class.java))
+            moduleList.add(MyApi(R.string.FiveMDogFoodActivity , FiveMDogFoodActivity::class.java))
             return moduleList
         }
     }
