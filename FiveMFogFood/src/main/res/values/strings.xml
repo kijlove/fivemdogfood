@@ -4,6 +4,7 @@
     <string name="JuheActivity">聚合数据</string>
     <string name="VideosActivity">视频测试</string>
     <string name="FiveMDogFoodActivity">5M狗粮</string>
+    <string name="PhpTestActivity">php测试</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>

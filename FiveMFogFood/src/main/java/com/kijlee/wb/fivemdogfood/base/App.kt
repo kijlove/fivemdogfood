@@ -32,6 +32,7 @@ class App:Application() {
         ViseLog.plant(LogcatTree()) //添加打印日志信息到Logcat的树
         RetrofitUrlManager.getInstance().putDomain(Api.juhe, Api.juhe_URL)//聚合api
         RetrofitUrlManager.getInstance().putDomain(Api.showapi, Api.showapi_URL)//万维易源
+        RetrofitUrlManager.getInstance().putDomain(Api.phpTest, Api.phpTest_URL)//测试php接口
         //防止多进程注册多次  可以在MainActivity或者其他页面注册MobPushReceiver
         //防止多进程注册多次  可以在MainActivity或者其他页面注册MobPushReceiver
         val processName = getProcessName(this)

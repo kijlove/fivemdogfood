@@ -7,7 +7,7 @@ import cn.bmob.v3.datatype.BmobFile
 /**
  * 用于用户注册
  */
-class FiveMUserBean : BmobUser() {
+class FiveMUserBean : BmobObject() {
     var numCode:String? = null//编号
     var local:String? = null//位置
     var age:Int? = 0//年龄

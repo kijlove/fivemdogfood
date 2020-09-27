@@ -7,6 +7,7 @@ import com.kijlee.wb.fivemdogfood.base.App
 import com.kijlee.wb.fivemdogfood.internet.Api
 import com.kijlee.wb.fivemdogfood.internet.services.GetWebTimeServices
 import com.kijlee.wb.fivemdogfood.internet.services.JuheService
+import com.kijlee.wb.fivemdogfood.internet.services.PhpTestServices
 import com.kijlee.wb.fivemdogfood.internet.services.ShowApiServices
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.OkHttpClient
@@ -25,6 +26,7 @@ class NetWorkManager private constructor() {
     var getWebTimeServices: GetWebTimeServices
     var showApiServices: ShowApiServices
     var juheService: JuheService
+    var phpTestServices: PhpTestServices
 
     init {
         val cookieJar =
@@ -44,6 +46,7 @@ class NetWorkManager private constructor() {
         this.getWebTimeServices = mRetrofit.create(GetWebTimeServices::class.java)
         this.showApiServices = mRetrofit.create(ShowApiServices::class.java)
         this.juheService = mRetrofit.create(JuheService::class.java)
+        this.phpTestServices = mRetrofit.create(PhpTestServices::class.java)
     }
 
     private object Holder {

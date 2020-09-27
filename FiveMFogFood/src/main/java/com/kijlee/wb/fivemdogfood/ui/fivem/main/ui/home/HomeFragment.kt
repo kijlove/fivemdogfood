@@ -86,11 +86,8 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         bmobUser.findObjects(object : FindListener<FiveMUserBean>() {
             override fun done(p0: MutableList<FiveMUserBean>?, p1: BmobException?) {
                 if (p1 == null) {
-                    for (item in p0!!) {
-                        ViseLog.e("username=====" + item.username)
-                    }
                     fiveMUserAdapter.setList(p0)
-                    ViseLog.e("查询成功" + p0.size)
+                    ViseLog.e("查询成功" + p0!!.size)
                 } else {
                     ViseLog.e("查询失败" + p1.message)
                 }

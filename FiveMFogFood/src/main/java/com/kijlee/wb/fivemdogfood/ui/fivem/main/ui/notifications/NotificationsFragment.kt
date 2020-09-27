@@ -103,6 +103,7 @@ class NotificationsFragment : Fragment() {
 
     var imageViewEditList: MutableList<ImageViewEditBean> = ArrayList()
     lateinit var carImageViewAdapter: EditImageListAdapter
+
     //图片上传用到
     fun initGallery() {
         iHandlerCallBack = object : IHandlerCallBack {
@@ -184,13 +185,12 @@ class NotificationsFragment : Fragment() {
                 override fun onError(p0: Int, p1: String?) {
                 }
             })
-        }else{
+        } else {
 
-            userBean.username = numCode.text.toString()//编号
             userBean.numCode = numCode.text.toString()//编号
-            userBean.setPassword(BmobInstallationManager.getInstallationId())
-            userBean.signUp(object : SaveListener<FiveMUserBean>() {
-                override fun done(p0: FiveMUserBean?, p1: BmobException?) {
+
+            userBean.save(object : SaveListener<String>() {
+                override fun done(p0: String?, p1: BmobException?) {
                     Snackbar.make(
                         addUserBtn,
                         "上传完成 " + BmobInstallationManager.getInstallationId(),
@@ -202,17 +202,5 @@ class NotificationsFragment : Fragment() {
         }
     }
 
-    //登录
-    fun login(){
-        user.login(object : SaveListener<FiveMUserBean>() {
-            override fun done(p0: FiveMUserBean?, p1: BmobException?) {
-                if (p1 == null) {
-                    user = p0!!
 
-                } else {
-                    ViseLog.e("查询失败：" + p1.message)
-                }
-
-            }
-        })
-    }}
+}
