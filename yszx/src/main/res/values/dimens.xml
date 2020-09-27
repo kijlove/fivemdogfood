@@ -1,0 +1,36 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--app中涉及到的字体大小-->
+    <dimen name="big_more_fonts_size">28sp</dimen>
+    <dimen name="big_fonts_size">24sp</dimen>
+    <dimen name="minddle_fonts_size">18sp</dimen>
+    <dimen name="norm_fonts_size">14sp</dimen>
+    <dimen name="small_fonts_size">12sp</dimen>
+    <dimen name="small_small_fonts_size">8sp</dimen>
+    <dimen name="finance_margin">50dp</dimen>
+    <dimen name="fu_finance_margin">-30dp</dimen>
+    <!--cardview的边据间隔-->
+    <dimen name="cardview_margin">8dp</dimen>
+    <!--文本默认padding-->
+    <dimen name="text_default_padding">8dp</dimen>
+    <!--默认item margin-->
+    <dimen name="item_margin">8dp</dimen>
+
+    <dimen name="space">8dp</dimen>
+    <dimen name="space2x">16dp</dimen>
+    <dimen name="space3x">24dp</dimen>
+    <dimen name="space4x">32dp</dimen>
+    <dimen name="space5x">40dp</dimen>
+    <dimen name="space6x">48dp</dimen>
+    <dimen name="space7x">56dp</dimen>
+    <dimen name="space8x">64dp</dimen>
+    <dimen name="space9x">72dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="app_bar_height_large">260dp</dimen>
+
+    <dimen name="def_height">50dp</dimen>
+
+    <dimen name="dp_mini">0.5dp</dimen>
+</resources>

@@ -1,2 +1,3 @@
+include ':yszx'
 include ':FiveMFogFood'
 rootProject.name = "5M狗粮"

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/text_default_padding"
+        android:scaleType="fitCenter"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_baseline_photo_camera_24"></ImageView>
+
+    <ImageView
+        android:id="@+id/delImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="@dimen/text_default_padding"
+        android:paddingBottom="@dimen/text_default_padding"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_cancel_red_24dp"></ImageView>
+</RelativeLayout>

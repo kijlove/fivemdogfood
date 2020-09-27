@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/car_message_imageview"
+    android:layout_width="match_parent"
+    android:layout_weight="1"
+    android:layout_height="300px"
+    android:layout_margin="@dimen/text_default_padding"
+    android:scaleType="centerCrop"
+    android:src="@drawable/ic_baseline_photo_camera_24">
+
+</ImageView>

@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-noarg'
 apply plugin: 'kotlin-allopen'
 apply plugin: 'kotlin-android-extensions'
+
 // 调用MobTech SDK
 apply plugin: 'com.mob.sdk'
 MobSDK {
@@ -231,7 +232,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        applicationId "com.kijlee.wb.fivemdogfood"
+        applicationId "com.kijlee.wb.yszx"
         minSdkVersion 17
         targetSdkVersion 29
         versionCode 1
@@ -247,6 +248,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     sourceSets {
         main.jniLibs.srcDirs = ['libs']
     }
@@ -265,7 +267,14 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
     //上网交互用到的类
     implementation 'me.jessyan:retrofit-url-manager:1.4.0'
     implementation ('com.squareup.retrofit2:retrofit:2.3.0'){
@@ -284,12 +293,6 @@ dependencies {
     //下载文件用到的类库
     implementation 'com.arialyy.aria:core:3.8.5'
     implementation 'com.google.android.material:material:1.3.0-alpha02'
-    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
-    implementation 'androidx.navigation:navigation-fragment:2.3.0'
-    implementation 'androidx.navigation:navigation-ui:2.3.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
     kapt 'com.arialyy.aria:compiler:3.8.5'
     implementation 'com.arialyy.aria:ftpComponent:3.8.5'// # 如果需要使用ftp，请增加该组件
     implementation 'com.arialyy.aria:sftpComponent:3.8.5'// # 如果需要使用ftp，请增加该组件
@@ -329,16 +332,18 @@ dependencies {
     implementation ('com.github.YancyYe:GalleryPick:1.2.1') {exclude module: 'ucrop'}
 
     testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
 
 
 }
 
 noArg {
-    annotation("com.kijlee.wb.fivemdogfood.annotations.NoArgOpenDataClass")
+    annotation("com.kijlee.wb.yszx.annotations.NoArgOpenDataClass")
 }
 
 allOpen {
-    annotation("com.kijlee.wb.fivemdogfood.annotations.NoArgOpenDataClass")
+    annotation("com.kijlee.wb.yszx.annotations.NoArgOpenDataClass")
 }
