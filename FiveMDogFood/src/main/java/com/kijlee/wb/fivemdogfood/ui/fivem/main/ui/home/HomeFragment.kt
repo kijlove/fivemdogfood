@@ -47,13 +47,13 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         fiveMUserAdapter.setOnItemChildClickListener { adapter, view, position ->
             when (view.id) {
                 R.id.image1 -> {
-                    bigImageLoader(fiveMUserAdapter.array[0])
+                    bigImageLoader((adapter.getItem(position) as FiveMUserBean).userImages!![0].url)
                 }
                 R.id.image2 -> {
-                    bigImageLoader(fiveMUserAdapter.array[1])
+                    bigImageLoader((adapter.getItem(position) as FiveMUserBean).userImages!![1].url)
                 }
                 R.id.image3 -> {
-                    bigImageLoader(fiveMUserAdapter.array[2])
+                    bigImageLoader((adapter.getItem(position) as FiveMUserBean).userImages!![2].url)
                 }
                 R.id.shareImage -> {//分享
 //                    val oks = OnekeyShare()

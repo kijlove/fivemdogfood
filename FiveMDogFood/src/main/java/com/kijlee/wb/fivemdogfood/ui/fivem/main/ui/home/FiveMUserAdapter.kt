@@ -9,14 +9,15 @@ import com.squareup.picasso.Picasso
 
 class FiveMUserAdapter constructor(resLayout: Int, data: MutableList<FiveMUserBean>) :
     BaseQuickAdapter<FiveMUserBean, BaseViewHolder>(resLayout, data) {
-init {
-    addChildClickViewIds(
-        R.id.image1,
-        R.id.image2,
-        R.id.image3,
-        R.id.shareImage
-    )
-}
+    init {
+        addChildClickViewIds(
+            R.id.image1,
+            R.id.image2,
+            R.id.image3,
+            R.id.shareImage
+        )
+    }
+
     var array: Array<String> = arrayOf(
 
         "https://img.tupianzj.com/uploads/allimg/202009/9999/984c2cbc21.jpg",
@@ -78,18 +79,27 @@ init {
         var imageView1 = holder!!.getView<ImageView>(R.id.image1)
         var imageView2 = holder!!.getView<ImageView>(R.id.image2)
         var imageView3 = holder!!.getView<ImageView>(R.id.image3)
-
-        Picasso.with(holder.itemView.context).load(array[0])
-            .placeholder(R.mipmap.ic_launcher)
-            .error(R.mipmap.ic_launcher)
-            .into(imageView1)
-        Picasso.with(holder.itemView.context).load(array[1])
-            .placeholder(R.mipmap.ic_launcher)
-            .error(R.mipmap.ic_launcher)
-            .into(imageView2)
-        Picasso.with(holder.itemView.context).load(array[2])
-            .placeholder(R.mipmap.ic_launcher)
-            .error(R.mipmap.ic_launcher)
-            .into(imageView3)
+        for (i in 0..item.userImages!!.size - 1) {
+            when (i) {
+                0 -> {
+                    Picasso.with(holder.itemView.context).load(item.userImages!![0].url)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .error(R.mipmap.ic_launcher)
+                        .into(imageView1)
+                }
+                1 -> {
+                    Picasso.with(holder.itemView.context).load(item.userImages!![1].url)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .error(R.mipmap.ic_launcher)
+                        .into(imageView2)
+                }
+                2 -> {
+                    Picasso.with(holder.itemView.context).load(item.userImages!![2].url)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .error(R.mipmap.ic_launcher)
+                        .into(imageView3)
+                }
+            }
+        }
     }
 }

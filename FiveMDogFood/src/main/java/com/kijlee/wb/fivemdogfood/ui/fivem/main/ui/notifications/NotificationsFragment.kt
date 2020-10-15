@@ -175,7 +175,19 @@ class NotificationsFragment : Fragment() {
                 override fun onSuccess(p0: MutableList<BmobFile>?, p1: MutableList<String>?) {
                     if (p1!!.size == array.size) {
                         userBean.userImages = p0
-                        ViseLog.e("山川完成")
+                        ViseLog.e("上传完成")
+                        userBean.numCode = numCode.text.toString()//编号
+
+                        userBean.save(object : SaveListener<String>() {
+                            override fun done(p0: String?, p1: BmobException?) {
+                                Snackbar.make(
+                                    addUserBtn,
+                                    "上传完成 " + BmobInstallationManager.getInstallationId(),
+                                    Snackbar.LENGTH_LONG
+                                ).show()
+
+                            }
+                        })
                     }
                 }
 
