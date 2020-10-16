@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@drawable/bg_input"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="手机号"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
+                android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@drawable/bg_input"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="密\t\t\t码"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
+                android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addUserBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="注册"></Button>
+        <Button
+            android:id="@+id/logonBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="登陆"></Button>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

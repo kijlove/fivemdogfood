@@ -1,19 +1,24 @@
-package com.kijlee.wb.fivemdogfood.ui.fivem.main.ui.notifications
+package com.kijlee.wb.fivemdogfood.ui.fivem.main.ui.adddate
+
 
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import cn.bmob.v3.BmobInstallationManager
+import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.datatype.BmobFile
 import cn.bmob.v3.exception.BmobException
+import cn.bmob.v3.listener.FindListener
 import cn.bmob.v3.listener.SaveListener
 import cn.bmob.v3.listener.UploadBatchListener
 import com.google.android.material.snackbar.Snackbar
@@ -32,7 +37,7 @@ import java.io.File
 /**
  *
  */
-class NotificationsFragment : Fragment() {
+class FgAddDateSm : Fragment() {
     var viewLayout: View? = null
     lateinit var iHandlerCallBack: IHandlerCallBack
     var userBean = FiveMUserBean()
@@ -95,7 +100,37 @@ class NotificationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //上传用户资料
         addUserBtn.setOnClickListener {
-            signUp()
+            if (!TextUtils.isEmpty(numCode.text)) {
+
+                var bmobUser = BmobQuery<FiveMUserBean>()
+                bmobUser.addWhereEqualTo(
+                    "numCode",
+                    numCode.text.toString()
+                )
+                bmobUser.findObjects(object : FindListener<FiveMUserBean>() {
+                    override fun done(p0: MutableList<FiveMUserBean>?, p1: BmobException?) {
+                        if (p1 == null) {
+                            ViseLog.e("查询成功" + p0!!.size)
+                            if (p0!!.size == 0) {
+                                signUp()
+                            } else {
+                                Snackbar.make(
+                                    addUserBtn, "编号相同",
+                                    Snackbar.LENGTH_LONG
+                                ).show()
+                            }
+                        } else {
+                            ViseLog.e("查询失败" + p1!!.message)
+                        }
+                    }
+                })
+            }else{
+
+                Snackbar.make(
+                    addUserBtn, "编号不能为空",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
