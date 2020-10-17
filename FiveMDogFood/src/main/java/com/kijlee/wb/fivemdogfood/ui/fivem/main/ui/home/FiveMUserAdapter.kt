@@ -74,6 +74,12 @@ class FiveMUserAdapter constructor(resLayout: Int, data: MutableList<FiveMUserBe
                 } else {
                     "自评:" + item.evaluate
                 }
+            ).setText(
+                R.id.objective, if (item.objective == null) {
+                    "目的:"
+                } else {
+                    "目的:" + item.objective
+                }
             )
 
         var imageView1 = holder!!.getView<ImageView>(R.id.image1)

@@ -9,6 +9,7 @@ import cn.bmob.v3.datatype.BmobFile
  */
 class FiveMUserBean : BmobObject() {
     var numCode:String? = null//编号
+    var managerUserName:String? = null//管理者账号
     var local:String? = null//位置
     var age:Int? = 0//年龄
     var sex:String? = null//性别

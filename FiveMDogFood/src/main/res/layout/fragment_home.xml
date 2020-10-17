@@ -14,7 +14,10 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/text_default_padding"
         android:entries="@array/local"></Spinner>
-
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+android:id="@+id/refreshDate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUser"
         android:layout_width="match_parent"
@@ -23,4 +26,7 @@
         android:layout_marginBottom="@dimen/text_default_padding"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/fivem_re_item_user" />
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </LinearLayout>

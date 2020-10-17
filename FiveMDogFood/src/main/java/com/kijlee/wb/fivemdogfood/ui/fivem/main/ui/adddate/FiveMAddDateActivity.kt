@@ -2,6 +2,7 @@ package com.kijlee.wb.fivemdogfood.ui.fivem.main.ui.adddate
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.fragment.app.FragmentTransaction
 import com.kijlee.wb.fivemdogfood.R
 import com.kijlee.wb.fivemdogfood.flag.Flag
@@ -20,19 +21,34 @@ class FiveMAddDateActivity : AppCompatActivity() {
                 var fm = supportFragmentManager!!.beginTransaction()
                 var bundle=Bundle()
                 addDateSm .arguments = bundle
-                fm.replace(R.id.addFragment, addDateSm, "FgAddDateSm")
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null)
+                fm.replace(R.id.addFragment, addDateSm, flag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                    .addToBackStack(null)
                 fm.commit()
             }
-            FragmentName.FgRegister->{
+            FragmentName.FgRegister,FragmentName.FgLogonIn->{
                 var fgRegister = FgRegister()
                 var fm = supportFragmentManager!!.beginTransaction()
                 var bundle=Bundle()
+                bundle.putString(Flag.FragmentSwitch,flag)
                 fgRegister .arguments = bundle
-                fm.replace(R.id.addFragment, fgRegister, "FgRegister")
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null)
+                fm.replace(R.id.addFragment, fgRegister, flag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                fm.commit()
+            }
+            FragmentName.FgEditDateSm->{
+                var fgEditDateSm = FgEditDateSm()
+                var fm = supportFragmentManager!!.beginTransaction()
+                var bundle=Bundle()
+                bundle.putString(Flag.FragmentSwitch,flag)
+                bundle.putSerializable(Flag.ToNextBean,intent.getSerializableExtra(Flag.GetLastBean))
+                fgEditDateSm .arguments = bundle
+                fm.replace(R.id.addFragment, fgEditDateSm, flag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 fm.commit()
             }
         }
     }
+
+
 }

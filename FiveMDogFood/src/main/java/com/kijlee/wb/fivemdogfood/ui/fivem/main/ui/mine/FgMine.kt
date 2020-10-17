@@ -33,24 +33,62 @@ class FgMine : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        addDateSm.setOnClickListener {
 
+        addDateSm.setOnClickListener {
             if (BmobUser.isLogin()) {
                 val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
-                Snackbar.make(addDateSm!!, "已经登录：" + user.getUsername(), Snackbar.LENGTH_LONG).show()
+                Snackbar.make(addDateSm!!, "已经登录：" + user.getUsername(), Snackbar.LENGTH_LONG)
+                    .show()
                 //跳转到下一级
                 var intent = Intent(context, FiveMAddDateActivity::class.java)
                 intent.putExtra(Flag.FragmentSwitch, FragmentName.FgAddDateSm)
                 startActivity(intent)
             } else {
                 Snackbar.make(addDateSm!!, "尚未登录", Snackbar.LENGTH_LONG).show()
-
-                //跳转到下一级
-                var intent = Intent(context, FiveMAddDateActivity::class.java)
-                intent.putExtra(Flag.FragmentSwitch, FragmentName.FgRegister)
-                startActivity(intent)
             }
+        }
+
+        logonOutText.setOnClickListener {
+            BmobUser.logOut()
+
+            if (!BmobUser.isLogin()) {
+                Snackbar.make(addDateSm!!, "退出成功", Snackbar.LENGTH_LONG).show()
+                registerText.visibility=View.VISIBLE
+                logonInText.visibility=View.VISIBLE
+                logonOutText.visibility=View.GONE
+                userNameText.visibility=View.GONE
+                userNameText.text = ""
+            }
+        }
+        registerText.setOnClickListener {
+            //跳转到下一级
+            var intent = Intent(context, FiveMAddDateActivity::class.java)
+            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgRegister)
+            startActivity(intent)
+        }
+        logonInText.setOnClickListener {
+            //跳转到下一级
+            var intent = Intent(context, FiveMAddDateActivity::class.java)
+            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgLogonIn)
+            startActivity(intent)
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        if (BmobUser.isLogin()) {
+            val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
+            registerText.visibility=View.GONE
+            logonInText.visibility=View.GONE
+            logonOutText.visibility=View.VISIBLE
+            userNameText.visibility=View.VISIBLE
+            userNameText.text = user.username.toString()
+        } else {
+            registerText.visibility=View.VISIBLE
+            logonInText.visibility=View.VISIBLE
+            logonOutText.visibility=View.GONE
+            userNameText.visibility=View.GONE
+        }
+    }
 }

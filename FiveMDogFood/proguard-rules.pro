@@ -19,3 +19,12 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class **_FragmentFinder { *; }
+-keep class androidx.fragment.app.* { *; }
+
+-keep class com.qmuiteam.qmui.arch.record.RecordIdClassMap { *; }
+-keep class com.qmuiteam.qmui.arch.record.RecordIdClassMapImpl { *; }
+
+-keep class com.qmuiteam.qmui.arch.scheme.SchemeMap {*;}
+-keep class com.qmuiteam.qmui.arch.scheme.SchemeMapImpl {*;}

@@ -30,7 +30,7 @@ class Fg_TnlInfo : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewLayout = inflater!!.inflate(R.layout.layout_recyclerview, container, false)
-        tnlModleBean = arguments!!.getSerializable("TnlModleBean") as TnlModleBean
+        tnlModleBean = requireArguments().getSerializable("TnlModleBean") as TnlModleBean
         adapter = ImageAdapter(R.layout.layout_image_name, tnlModleBean!!.imgList!!.toMutableList())
         viewLayout!!.findViewById<RecyclerView>(R.id.recyclerView).adapter = adapter
         viewLayout!!.findViewById<RecyclerView>(R.id.recyclerView).layoutManager =
@@ -52,7 +52,7 @@ class Fg_TnlInfo : Fragment() {
             .placeholder(R.mipmap.ic_launcher)
             .error(R.mipmap.ic_launcher)
             .into(imageView)
-        val dialog = Dialog(context!!)
+        val dialog = Dialog(requireContext())
 //        image.setImageBitmap(bitmap)
         dialog.setContentView(imageView)
         dialog.getWindow()!!.setBackgroundDrawableResource(android.R.color.transparent)

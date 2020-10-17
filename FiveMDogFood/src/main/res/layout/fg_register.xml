@@ -11,8 +11,6 @@
         android:padding="@dimen/activity_vertical_margin">
 
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,18 +49,24 @@
                 android:background="@null"
                 android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
         </LinearLayout>
-
-        <Button
-            android:id="@+id/addUserBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="注册"></Button>
-        <Button
-            android:id="@+id/logonBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="登陆"></Button>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <Button
+        android:id="@+id/addUserBtn"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="注册"></Button>
+    <Button
+        android:id="@+id/logonBtn"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="登陆"></Button></LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import androidx.multidex.MultiDex
 import cn.bmob.v3.Bmob
 import cn.bmob.v3.BmobConfig
 import com.kijlee.wb.fivemdogfood.internet.Api
+import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager
 import com.vise.log.ViseLog
 import com.vise.log.inner.LogcatTree
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
@@ -22,6 +23,8 @@ class App:Application() {
         super.onCreate()
         instance = this
         MultiDex.install(this);
+        // QMUI设置
+        QMUISwipeBackActivityManager.init(this)
         ViseLog.getLogConfig()
             .configAllowLog(true) //是否输出日志
             .configShowBorders(true) //是否排版显示

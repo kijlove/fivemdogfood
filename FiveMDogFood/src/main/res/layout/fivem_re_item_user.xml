@@ -13,22 +13,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/numCode"
-        style="@style/defaut_text"
-        android:text="编号:"
-        android:textStyle="bold"></TextView>
-    <ImageView
-        android:id="@+id/shareImage"
-        style="@style/defaut_text"
-        android:visibility="gone"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_baseline_share_24"
-        ></ImageView>
-</RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/numCode"
+                style="@style/defaut_text"
+                android:text="编号:"
+                android:textStyle="bold"></TextView>
+
+            <ImageView
+                android:id="@+id/shareImage"
+                style="@style/defaut_text"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_baseline_share_24"
+                android:visibility="gone"></ImageView>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -109,6 +111,10 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/objective"
+            style="@style/defaut_text"
+            android:text="目的:"></TextView>
+        <TextView
             android:id="@+id/evaluate"
             style="@style/defaut_text"
             android:text="自评:"></TextView>
@@ -121,8 +127,8 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/text_default_padding"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:padding="@dimen/text_default_padding">
 
                 <ImageView
                     android:id="@+id/image1"
@@ -138,8 +144,8 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/text_default_padding"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:padding="@dimen/text_default_padding">
 
                 <ImageView
                     android:id="@+id/image2"
@@ -155,8 +161,8 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/text_default_padding"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:padding="@dimen/text_default_padding">
 
                 <ImageView
                     android:id="@+id/image3"

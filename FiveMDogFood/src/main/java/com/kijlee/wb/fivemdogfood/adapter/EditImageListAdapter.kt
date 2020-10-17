@@ -13,7 +13,11 @@ import com.vise.log.ViseLog
  */
 class EditImageListAdapter constructor(resLayoutId: Int, data: MutableList<ImageViewEditBean>) :
         BaseQuickAdapter<ImageViewEditBean, BaseViewHolder>(resLayoutId, data) {
-
+    init {
+        addChildClickViewIds(
+            R.id.delImageView
+        )
+    }
     override fun convert(helper: BaseViewHolder, item: ImageViewEditBean) {
         //新增隐藏掉删除按钮  如果不是就显示删除按钮用于删除
         helper!!.setGone(R.id.delImageView, item!!.isShowDelIcon)
@@ -26,7 +30,7 @@ class EditImageListAdapter constructor(resLayoutId: Int, data: MutableList<Image
                     .load(if (item!!.isLocal) {
                         "file://" + item!!.imagePath
                     }   else {
-                        "null"
+                        item!!.imagePath
                     })
                     .placeholder(R.drawable.ic_baseline_photo_camera_24)
                     .error(R.drawable.ic_baseline_photo_camera_24)

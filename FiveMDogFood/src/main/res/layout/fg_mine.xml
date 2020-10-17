@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fivem.main.ui.mine.FgMine"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.fivem.main.ui.mine.FgMine">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,6 +12,14 @@
         android:background="@color/black"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/userNameText"
+            style="@style/defaut_text"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="1px"
+            android:background="@color/white"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:text="退出"></TextView>
         <TextView
             android:id="@+id/addDateSm"
             style="@style/defaut_text"
@@ -38,6 +46,33 @@
             android:background="@color/white"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
             android:text="添加数据异性"></TextView>
+
+        <TextView
+            android:id="@+id/logonOutText"
+            style="@style/defaut_text"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="1px"
+            android:background="@color/white"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:text="退出"></TextView>
+
+        <TextView
+            android:id="@+id/logonInText"
+            style="@style/defaut_text"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="1px"
+            android:background="@color/white"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:text="登陆"></TextView>
+
+        <TextView
+            android:id="@+id/registerText"
+            style="@style/defaut_text"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="1px"
+            android:background="@color/white"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:text="注册"></TextView>
     </LinearLayout>
 
 </LinearLayout>
