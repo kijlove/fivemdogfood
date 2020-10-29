@@ -14,15 +14,13 @@
         android:padding="@dimen/activity_vertical_margin">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
+
+            style="@style/input_hint_linear">
 
             <TextView
                 style="@style/defaut_text"
-                android:text="编号"></TextView>
+                android:text="编号"
+                android:textSize="@dimen/small_fonts_size"></TextView>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/numCode"
@@ -34,15 +32,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
+
+            style="@style/input_hint_linear">
 
             <TextView
                 style="@style/defaut_text"
-                android:text="坐标"></TextView>
+                android:text="坐标"
+                android:textSize="@dimen/small_fonts_size"></TextView>
 
             <Spinner
                 android:id="@+id/local"
@@ -51,37 +47,30 @@
                 android:entries="@array/local"></Spinner>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
+
+        <LinearLayout style="@style/input_hint_linear">
 
             <TextView
                 style="@style/defaut_text"
-                android:text="年龄"></TextView>
+                android:text="出生年月"
+                android:textSize="@dimen/small_fonts_size"></TextView>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/age"
+            <TextView
+                android:id="@+id/birthdayText"
+                style="@style/defaut_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@null"
-                android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
+                android:layout_gravity="center_vertical" />
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
+
+            style="@style/input_hint_linear">
 
             <TextView
                 style="@style/defaut_text"
-                android:text="性别"></TextView>
+                android:text="性别"
+                android:textSize="@dimen/small_fonts_size"></TextView>
 
             <RadioGroup
                 android:id="@+id/sexGroup"
@@ -102,118 +91,180 @@
             </RadioGroup>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
+        <LinearLayout style="@style/input_hint_linear">
 
             <TextView
                 style="@style/defaut_text"
-                android:text="属性"></TextView>
+                android:text="属性"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
+                android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="学历"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/degree_array"></Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="收入状况"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
+                android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="爱好"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
+                android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="婚姻状况"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
+                android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="会员等级"
+                android:textSize="@dimen/small_fonts_size"></TextView>
 
             <RadioGroup
-                android:id="@+id/attributeGroup"
+                android:id="@+id/vipLevelGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/sRadio"
-                    style="@style/defaut_text"
-                    android:text="Sub"></RadioButton>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="青铜"></RadioButton>
 
                 <RadioButton
-                    android:id="@+id/mRadio"
-                    style="@style/defaut_text"
-                    android:text="Dom"></RadioButton>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="白银"></RadioButton>
 
                 <RadioButton
-                    android:id="@+id/doubleRadio"
-                    style="@style/defaut_text"
-                    android:text="双"></RadioButton>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="黄金"></RadioButton>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="钻石"></RadioButton>
             </RadioGroup>
         </LinearLayout>
 
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
+
+            style="@style/input_hint_linear"
+            android:orientation="vertical">
 
             <TextView
                 style="@style/defaut_text"
-                android:text="程度"></TextView>
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/degree"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/defaut_text"
-                android:text="职业"></TextView>
-
+                android:text="职业及未来规划"
+                android:textSize="@dimen/small_fonts_size"></TextView>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/occupation"
+                style="@style/defaut_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:background="@null"></com.google.android.material.textfield.TextInputEditText>
         </LinearLayout>
 
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
+
+            style="@style/input_hint_linear"
+            android:orientation="vertical">
 
             <TextView
                 style="@style/defaut_text"
-                android:text="目的"></TextView>
-
+                android:text="期望的另一半"
+                android:textSize="@dimen/small_fonts_size"></TextView>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/objective"
+                style="@style/defaut_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:background="@null"></com.google.android.material.textfield.TextInputEditText>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
+
+            style="@style/input_hint_linear"
+            android:orientation="vertical">
 
             <TextView
                 style="@style/defaut_text"
-                android:text="自评"></TextView>
-
+                android:text="自我介绍及家庭情况"
+                android:textSize="@dimen/small_fonts_size"></TextView>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/evaluate"
+                style="@style/defaut_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:background="@null"></com.google.android.material.textfield.TextInputEditText>
         </LinearLayout>
@@ -230,7 +281,8 @@
 
             <TextView
                 style="@style/defaut_text"
-                android:text="图片"></TextView>
+                android:text="图片"
+                android:textSize="@dimen/small_fonts_size"></TextView>
 
             <ImageView
                 android:id="@+id/addPhoto"
@@ -258,12 +310,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="保存"></Button>
+
         <Button
             android:id="@+id/delUserBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-android:visibility="gone"
             android:layout_gravity="center_horizontal"
-            android:text="删除"></Button>
+            android:text="删除"
+            android:visibility="gone"></Button>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

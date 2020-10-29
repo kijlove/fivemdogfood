@@ -44,6 +44,21 @@
         <item>8小时后</item>
     </array>
 
+    <array name="degree_array">
+        <item>小学</item>
+        <item>初级中学</item>
+        <item>中专</item>
+        <item>高级中学</item>
+        <item>职校</item>
+        <item>中技</item>
+        <item>专科(高职、高专、高技)</item>
+        <item>本科</item>
+        <item>硕士研究生</item>
+        <item>本科</item>
+        <item>博士研究生</item>
+    </array>
+
+
     <string-array name="local">
         <item>北京</item>
         <item>上海</item>

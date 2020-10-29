@@ -2,6 +2,7 @@ package com.kijlee.wb.fivemdogfood.ui.fivem.main.ui.adddate
 
 
 import android.Manifest
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,7 +12,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -41,6 +44,8 @@ import com.yancy.gallerypick.config.GalleryPick
 import com.yancy.gallerypick.inter.IHandlerCallBack
 import kotlinx.android.synthetic.main.fg_add_fivem_user.*
 import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  *编辑信息
@@ -104,14 +109,31 @@ class FgEditDateSm : Fragment() {
                 GalleryPick.getInstance().setGalleryConfig(galleryConfig).open(activity)
             }
         }
-        viewLayout!!.findViewById<RecyclerView>(R.id.impage_recyclerview).adapter =
-            carImageViewAdapter
+
+        viewLayout!!.findViewById<TextView>(R.id.birthdayText).setOnClickListener { view ->
+            ViseLog.e("点击了出生日期")
+            DatePickerDialog(
+                requireContext(), DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                    //更新EditText控件日期 小于10加0
+                    viewLayout!!.findViewById<TextView>(R.id.birthdayText).setText(
+                        StringBuilder().append(year).append("-")
+                            .append(if (month + 1 < 10) "0" + (month + 1) else month + 1)
+                            .append("-")
+                            .append(if (day < 10) "0" + day else day)
+                    )
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+        viewLayout!!.findViewById<RecyclerView>(R.id.impage_recyclerview).adapter = carImageViewAdapter
         return viewLayout
     }
 
+    var calendar: Calendar = Calendar.getInstance()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUserMessage()
+
         carImageViewAdapter.setOnItemChildClickListener { adapter, view, position ->
             when (view.id) {
                 R.id.delImageView -> {
@@ -256,22 +278,10 @@ class FgEditDateSm : Fragment() {
             )
         ) {
             fiveMUserBean!!.local = local.selectedItem.toString()
-            fiveMUserBean!!.age = age.text.toString().toInt()
-            when (attributeGroup.checkedRadioButtonId) {
-                R.id.sRadio -> {
-                    fiveMUserBean!!.attribute = "S"
-                }
-                R.id.mRadio -> {
-                    fiveMUserBean!!.attribute = "M"
-                }
-                R.id.doubleRadio -> {
-                    fiveMUserBean!!.attribute = "双"
-                }
-            }
+
             fiveMUserBean!!.evaluate = evaluate.text.toString()
             fiveMUserBean!!.objective = objective.text.toString()
             fiveMUserBean!!.occupation = occupation.text.toString()
-            fiveMUserBean!!.degree = degree.text.toString()
             fiveMUserBean!!.numCode = numCode.text.toString()//编号
             when (sexGroup.checkedRadioButtonId) {
                 R.id.manRadio -> {
@@ -341,35 +351,17 @@ class FgEditDateSm : Fragment() {
 
     fun setUserMessage() {
         delUserBtn.visibility = View.VISIBLE
-        age.setText("" + fiveMUserBean!!.age)
         numCode.setText(fiveMUserBean!!.numCode)
         evaluate.setText(fiveMUserBean!!.evaluate)
         objective.setText(fiveMUserBean!!.objective)
         occupation.setText(fiveMUserBean!!.occupation)
-        degree.setText(fiveMUserBean!!.degree)
         for (i in 0..resources.getStringArray(R.array.local).size - 1) {
             if (fiveMUserBean!!.local == resources.getStringArray(R.array.local)[i]) {
                 local.setSelection(i)
             }
         }
 
-        when (fiveMUserBean!!.attribute) {
-            "S" -> {
-                attributeGroup.clearCheck()
-                sRadio.isChecked = true
-            }
-            "M" -> {
-                attributeGroup.clearCheck()
-                mRadio.isChecked = true
-            }
-            "双" -> {
-                attributeGroup.clearCheck()
-                doubleRadio.isChecked = true
-            }
-            else -> {
-                attributeGroup.clearCheck()
-            }
-        }
+
         when (fiveMUserBean!!.sex) {
             "男" -> {
                 sexGroup.clearCheck()

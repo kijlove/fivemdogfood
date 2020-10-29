@@ -2,6 +2,7 @@ package com.kijlee.wb.fivemdogfood.ui.fivem.main.ui.adddate
 
 
 import android.Manifest
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -39,6 +41,8 @@ import com.yancy.gallerypick.inter.IHandlerCallBack
 import kotlinx.android.synthetic.main.fg_add_fivem_user.*
 import kotlinx.android.synthetic.main.fg_mine.*
 import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  *
@@ -68,6 +72,21 @@ class FgAddDateSm : Fragment() {
             .build()
         carImageViewAdapter = EditImageListAdapter(R.layout.re_item_image_edit, imageViewEditList)
 
+        viewLayout!!.findViewById<TextView>(R.id.birthdayText).setOnClickListener { view ->
+            ViseLog.e("点击了出生日期")
+            DatePickerDialog(
+                requireContext(), DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                    //更新EditText控件日期 小于10加0
+                    viewLayout!!.findViewById<TextView>(R.id.birthdayText).setText(
+                        StringBuilder().append(year).append("-")
+                            .append(if (month + 1 < 10) "0" + (month + 1) else month + 1)
+                            .append("-")
+                            .append(if (day < 10) "0" + day else day)
+                    )
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
         //添加图片
         viewLayout!!.findViewById<ImageView>(R.id.addPhoto).setOnClickListener { view ->
             if (ContextCompat.checkSelfPermission(
@@ -100,6 +119,7 @@ class FgAddDateSm : Fragment() {
             carImageViewAdapter
         return viewLayout
     }
+    var calendar: Calendar = Calendar.getInstance()
 
     var user = FiveMUserBean()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -183,22 +203,10 @@ class FgAddDateSm : Fragment() {
             val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
             userBean.managerUserName = user.username
             userBean.local = local.selectedItem.toString()
-            userBean.age = age.text.toString().toInt()
-            when (attributeGroup.checkedRadioButtonId) {
-                R.id.sRadio -> {
-                    userBean.attribute = "S"
-                }
-                R.id.mRadio -> {
-                    userBean.attribute = "M"
-                }
-                R.id.doubleRadio -> {
-                    userBean.attribute = "双"
-                }
-            }
+
             userBean.evaluate = evaluate.text.toString()
             userBean.objective = objective.text.toString()
             userBean.occupation = occupation.text.toString()
-            userBean.degree = degree.text.toString()
             when (sexGroup.checkedRadioButtonId) {
                 R.id.manRadio -> {
                     userBean.sex = "男"
