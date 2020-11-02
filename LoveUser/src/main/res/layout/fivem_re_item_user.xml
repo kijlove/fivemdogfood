@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/text_default_padding"
+    android:layout_marginTop="@dimen/text_default_padding"
+    android:layout_marginRight="@dimen/text_default_padding"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/text_default_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/numCode"
+                style="@style/defaut_text"
+                android:text="编号:"
+                android:textStyle="bold"></TextView>
+
+            <ImageView
+                android:id="@+id/shareImage"
+                style="@style/defaut_text"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_baseline_share_24"
+                android:visibility="gone"></ImageView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:padding="@dimen/text_default_padding">
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_baseline_photo_camera_24"></ImageView>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/birthdayText"
+                    style="@style/defaut_text"
+                    android:text="出生年月:"
+                    android:textSize="@dimen/small_fonts_size"></TextView>
+
+                <TextView
+                    android:id="@+id/maritalStatus"
+                    style="@style/defaut_text"
+                    android:text="婚姻状况"
+                    android:textSize="@dimen/small_fonts_size"></TextView>
+
+                <TextView
+                    android:id="@+id/vipLevel"
+                    style="@style/defaut_text"
+                    android:text="会员等级"
+                    android:textSize="@dimen/small_fonts_size"></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/sex"
+                    style="@style/defaut_text"
+                    android:text="性别:"
+                    android:textSize="@dimen/small_fonts_size"></TextView>
+
+                <TextView
+                    android:id="@+id/academic"
+                    style="@style/defaut_text"
+                    android:text="学历"
+                    android:textSize="@dimen/small_fonts_size"></TextView>
+
+                <TextView
+                    android:id="@+id/attribute"
+                    style="@style/defaut_text"
+                    android:text="属性"
+                    android:textSize="@dimen/small_fonts_size"></TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

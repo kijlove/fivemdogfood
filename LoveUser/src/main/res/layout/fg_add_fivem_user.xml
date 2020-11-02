@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="编号"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/numCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="坐标"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <Spinner
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/local"></Spinner>
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="出生年月"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <TextView
+                android:id="@+id/birthdayText"
+                style="@style/defaut_text"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="性别"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <RadioGroup
+                android:id="@+id/sexGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/manRadio"
+                    style="@style/defaut_text"
+                    android:text="男"></RadioButton>
+
+                <RadioButton
+                    android:id="@+id/womanRadio"
+                    style="@style/defaut_text"
+                    android:text="女"></RadioButton>
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="属性"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/attribute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="学历"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <Spinner
+                android:id="@+id/academic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/degree_array"></Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="收入状况"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/income"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="爱好"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hobby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="婚姻状况"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/maritalStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="会员等级"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <RadioGroup
+                android:id="@+id/vipLevelGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/copper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="青铜"></RadioButton>
+
+                <RadioButton
+                    android:id="@+id/silver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="白银"></RadioButton>
+
+                <RadioButton
+                    android:id="@+id/gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="黄金"></RadioButton>
+
+                <RadioButton
+                    android:id="@+id/diamond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="钻石"></RadioButton>
+            </RadioGroup>
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            style="@style/input_hint_linear"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="职业及未来规划"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/profession"
+                style="@style/defaut_text"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_vertical"
+                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            style="@style/input_hint_linear"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="期望的另一半"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/other"
+                style="@style/defaut_text"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_vertical"
+                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+
+        <LinearLayout
+
+            style="@style/input_hint_linear"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="自我介绍及家庭情况"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/family"
+                style="@style/defaut_text"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_vertical"
+                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="4dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="4dp">
+
+            <TextView
+                style="@style/defaut_text"
+                android:text="图片"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <ImageView
+                android:id="@+id/addPhoto"
+                style="@style/defaut_text"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_photo_camera_24"></ImageView>
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/impage_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="1px"
+            android:background="@color/white"
+            app:layoutManager="GridLayoutManager"
+            app:spanCount="3"
+            tools:listitem="@layout/recycler_item_image"></androidx.recyclerview.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/addUserBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="保存"></Button>
+
+        <Button
+            android:id="@+id/delUserBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="删除"
+            android:visibility="gone"></Button>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
