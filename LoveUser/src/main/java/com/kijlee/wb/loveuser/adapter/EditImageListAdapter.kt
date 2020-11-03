@@ -14,6 +14,7 @@ class EditImageListAdapter constructor(resLayoutId: Int, data: MutableList<Image
         BaseQuickAdapter<ImageViewEditBean, BaseViewHolder>(resLayoutId, data) {
     init {
         addChildClickViewIds(
+            R.id.imageView,
             R.id.delImageView
         )
     }

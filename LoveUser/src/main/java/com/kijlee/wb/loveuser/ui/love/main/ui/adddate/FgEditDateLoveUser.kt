@@ -147,6 +147,9 @@ class FgEditDateLoveUser : Fragment() {
 
         carImageViewAdapter.setOnItemChildClickListener { adapter, view, position ->
             when (view.id) {
+                R.id.imageView -> {
+                    bigImageLoader((adapter.getItem(position) as ImageViewEditBean).imagePath!!)
+                }
                 R.id.delImageView -> {
 
                     for (i in 0..userBean!!.userImages!!.size - 1) {
@@ -456,7 +459,16 @@ class FgEditDateLoveUser : Fragment() {
         for (s in userBean!!.userImages!!) {
             var imageViewEditBean = ImageViewEditBean()
             imageViewEditBean.imagePath = s.fileUrl
-            imageViewEditBean.isShowDelIcon = false
+            if (BmobUser.isLogin()) {
+                val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
+                if (userBean!!.managerId == user.objectId) {
+                    imageViewEditBean.isShowDelIcon = false
+                } else {
+                    imageViewEditBean.isShowDelIcon = true
+                }
+            } else {
+                imageViewEditBean.isShowDelIcon = true
+            }
             imageViewEditBean.isLocal = false
             imageViewEditList.add(imageViewEditBean)
         }

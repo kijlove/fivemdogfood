@@ -11,7 +11,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath 'com.android.tools.build:gradle:4.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         //用于解决kotlin没有无参构造函数
@@ -22,7 +22,7 @@ buildscript {
         // 注册MobSDK
         classpath 'com.mob.sdk:MobSDK:+'
         //Bmob
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:4.0.2'
     }
 }
 
