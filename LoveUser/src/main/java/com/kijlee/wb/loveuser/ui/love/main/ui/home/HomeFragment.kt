@@ -35,7 +35,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     var mView: View? = null
     var userList: MutableList<LoveUserBean> = ArrayList<LoveUserBean>()
     lateinit var fiveMUserAdapter: FiveMUserAdapter
-    var managerUserName: String? = null
+    var managerId: String? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,7 +50,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         super.onViewCreated(view, savedInstanceState)
         recyclerViewUser.adapter = fiveMUserAdapter
 
-        if (managerUserName == null) {
+        if (managerId == null) {
             val builder = QMUIDialog.EditTextDialogBuilder(requireContext())
             builder.setTitle("输入管理员账号")
                 .addAction(
@@ -70,13 +70,11 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 .create().show()
         }
         fiveMUserAdapter.setOnItemClickListener { adapter, view, position ->
-            if (BmobUser.isLogin() && BmobUser.getCurrentUser(ManagerUser::class.java).objectId.equals((adapter.getItem(position) as LoveUserBean)!!.managerId)) {
                 //编辑用户信息
                 var intent = Intent(context, FiveMAddDateActivity::class.java)
                 intent.putExtra(Flag.FragmentSwitch, FragmentName.FgEditDateSm)
                 intent.putExtra(Flag.ToNextBean, adapter.getItem(position) as LoveUserBean)
                 startActivity(intent)
-            }
         }
         fiveMUserAdapter.setOnItemChildClickListener { adapter, view, position ->
             when (view.id) {
@@ -103,63 +101,65 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         }
         city.onItemSelectedListener = this
         refreshDate.setOnRefreshListener {
-            getUserList()
+            if (managerId != null) {
+                getUserList(managerId!!)
+            }
         }
     }
 
-    fun getManagerId(string:String){
+    fun getManagerId(string: String) {
 
-        ViseLog.e("查询结果====="+string)
         //最后组装完整的and条件
-            var bmobUser2 = BmobQuery<ManagerUser>()
-            bmobUser2.addWhereEqualTo(
-                "managerId",
-                string
-            )
-            bmobUser2.findObjects(object : FindListener<ManagerUser>() {
-                override fun done(p0: MutableList<ManagerUser>?, p1: BmobException?) {
-                    ViseLog.e("查询结果=====")
-                    if (p1 == null) {
-                        ViseLog.e("查询成功" )
-                        getUserList()
-                    } else {
-                        ViseLog.e("查询失败" )
-                    }
+        var bmobUser2 = BmobQuery<ManagerUser>()
+        bmobUser2.addWhereEqualTo(
+            "managerId",
+            string
+        )
+        bmobUser2.findObjects(object : FindListener<ManagerUser>() {
+            override fun done(p0: MutableList<ManagerUser>?, p1: BmobException?) {
+                ViseLog.e("查询结果=====")
+                if (p1 == null) {
+                    managerId = p0!!.get(0)!!.objectId
+                    ViseLog.e("查询成功"+managerId)
+                    getUserList(managerId!!)
+                } else {
+                    ViseLog.e("查询失败")
                 }
-            })
+            }
+        })
     }
 
-    fun getUserList() {
+    fun getUserList(managerId: String) {
         //最后组装完整的and条件
-            val andQuerys: MutableList<BmobQuery<LoveUserBean>> =
-                ArrayList<BmobQuery<LoveUserBean>>()
-//            var bmobUser1 = BmobQuery<LoveUserBean>()
-            var bmobUser = BmobQuery<LoveUserBean>()
-//            bmobUser1.addWhereEqualTo(
-//                "managerUserName",
-//                managerUserName
-//            )
-            bmobUser.addWhereEqualTo(
-                "city",
-                mView!!.findViewById<Spinner>(R.id.city).selectedItem.toString()
-            )
-//            andQuerys.add(bmobUser1)
-            andQuerys.add(bmobUser)
-            var bmobUser2 = BmobQuery<LoveUserBean>()
-            bmobUser2.and(andQuerys)
-            bmobUser2.findObjects(object : FindListener<LoveUserBean>() {
-                override fun done(p0: MutableList<LoveUserBean>?, p1: BmobException?) {
-                    ViseLog.e("查询结果=====")
-                    refreshDate.isRefreshing = false
-                    if (p1 == null) {
-                        fiveMUserAdapter.setList(p0)
-                        ViseLog.e("查询成功" + p0!!.size)
-                    } else {
-                        ViseLog.e("查询失败" + p1.message)
-                    }
+        val andQuerys: MutableList<BmobQuery<LoveUserBean>> =
+            ArrayList<BmobQuery<LoveUserBean>>()
+        var bmobUser1 = BmobQuery<LoveUserBean>()
+        var bmobUser = BmobQuery<LoveUserBean>()
+        bmobUser1.addWhereEqualTo(
+            "managerId",
+            managerId
+        )
+        bmobUser.addWhereEqualTo(
+            "city",
+            mView!!.findViewById<Spinner>(R.id.city).selectedItem.toString()
+        )
+        andQuerys.add(bmobUser1)
+        andQuerys.add(bmobUser)
+        var bmobUser2 = BmobQuery<LoveUserBean>()
+        bmobUser2.and(andQuerys)
+        bmobUser2.findObjects(object : FindListener<LoveUserBean>() {
+            override fun done(p0: MutableList<LoveUserBean>?, p1: BmobException?) {
+                ViseLog.e("查询结果====="+managerId)
+                refreshDate.isRefreshing = false
+                if (p1 == null) {
+                    fiveMUserAdapter.setList(p0)
+                    ViseLog.e("查询成功" + p0!!.size)
+                } else {
+                    ViseLog.e("查询失败" + p1.message)
                 }
-            })
-        }
+            }
+        })
+    }
 
     fun bigImageLoader(imageUrl: String) {
         ViseLog.e("地址==" + imageUrl)
@@ -182,6 +182,8 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         ViseLog.e("local=====" + p0!!.getItemAtPosition(p2).toString())
-        getUserList()
+      if(managerId!=null){
+          getUserList(managerId!!)
+      }
     }
 }

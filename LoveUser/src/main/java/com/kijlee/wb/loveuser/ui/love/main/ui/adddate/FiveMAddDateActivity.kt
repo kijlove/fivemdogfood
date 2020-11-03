@@ -35,7 +35,7 @@ class FiveMAddDateActivity : AppCompatActivity() {
                 fm.commit()
             }
             FragmentName.FgEditDateSm->{
-                var fgEditDateSm = FgEditDateSm()
+                var fgEditDateSm = FgEditDateLoveUser()
                 var fm = supportFragmentManager!!.beginTransaction()
                 var bundle=Bundle()
                 bundle.putString(Flag.FragmentSwitch,flag)

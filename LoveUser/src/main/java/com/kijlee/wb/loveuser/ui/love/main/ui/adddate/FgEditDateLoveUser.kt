@@ -11,6 +11,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
@@ -46,7 +47,7 @@ import kotlin.collections.ArrayList
 /**
  *编辑信息
  */
-class FgEditDateSm : Fragment() {
+class FgEditDateLoveUser : Fragment() {
     var viewLayout: View? = null
     lateinit var iHandlerCallBack: IHandlerCallBack
     var userBean: LoveUserBean? = null
@@ -123,6 +124,19 @@ class FgEditDateSm : Fragment() {
         }
         viewLayout!!.findViewById<RecyclerView>(R.id.impage_recyclerview).adapter =
             carImageViewAdapter
+        if (BmobUser.isLogin()) {
+            val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
+            if (userBean!!.managerId == user.objectId) {
+                viewLayout!!.findViewById<Button>(R.id.addUserBtn).visibility = View.VISIBLE
+                viewLayout!!.findViewById<Button>(R.id.delUserBtn).visibility = View.VISIBLE
+            } else {
+                viewLayout!!.findViewById<Button>(R.id.addUserBtn).visibility = View.GONE
+                viewLayout!!.findViewById<Button>(R.id.delUserBtn).visibility = View.GONE
+            }
+        } else {
+            viewLayout!!.findViewById<Button>(R.id.addUserBtn).visibility = View.GONE
+            viewLayout!!.findViewById<Button>(R.id.delUserBtn).visibility = View.GONE
+        }
         return viewLayout
     }
 
@@ -232,6 +246,8 @@ class FgEditDateSm : Fragment() {
                 })
             }
         }
+
+
     }
 
     //图片上传用到
@@ -374,7 +390,7 @@ class FgEditDateSm : Fragment() {
     }
 
     fun setUserMessage() {
-        delUserBtn.visibility = View.VISIBLE
+
         numCode.setText(userBean!!.numCode)
         for (i in 0..resources.getStringArray(R.array.local).size - 1) {
             if (userBean!!.city == resources.getStringArray(R.array.local)[i]) {
@@ -408,18 +424,18 @@ class FgEditDateSm : Fragment() {
         attribute.setText(userBean!!.attribute!!)
         income.setText(userBean!!.income!!)
         hobby.setText(userBean!!.hobby)
-         maritalStatus.setText(userBean!!.maritalStatus )
-         profession.setText(userBean!!.profession)
-         family.setText(userBean!!.family)
-          other.setText(userBean!!.other)
-         profession.setText(userBean!!.profession )
+        maritalStatus.setText(userBean!!.maritalStatus)
+        profession.setText(userBean!!.profession)
+        family.setText(userBean!!.family)
+        other.setText(userBean!!.other)
+        profession.setText(userBean!!.profession)
 
-        when ( userBean!!.vipLevel) {
-            "青铜"             -> {
-                  copper.isChecked =true
+        when (userBean!!.vipLevel) {
+            "青铜" -> {
+                copper.isChecked = true
             }
             "白银" -> {
-                silver.isChecked =true
+                silver.isChecked = true
             }
             "黄金" -> {
                 gold.isChecked = true
@@ -433,7 +449,7 @@ class FgEditDateSm : Fragment() {
             }
         }
 
-        birthdayText.text = SimpleDateFormat("yyyy-MM-dd").format(Date(userBean!!.birthday!! ))
+        birthdayText.text = SimpleDateFormat("yyyy-MM-dd").format(Date(userBean!!.birthday!!))
 
 
 
