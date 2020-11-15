@@ -45,6 +45,13 @@ class FiveMAddDateActivity : AppCompatActivity() {
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 fm.commit()
             }
+            FragmentName.FgAddOrg->{//注册机构
+                var fgAddorg = Fg_AddOrg()
+                var fm = supportFragmentManager!!.beginTransaction()
+                fm.replace(R.id.addFragment, fgAddorg, flag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                fm.commit()
+            }
         }
     }
 

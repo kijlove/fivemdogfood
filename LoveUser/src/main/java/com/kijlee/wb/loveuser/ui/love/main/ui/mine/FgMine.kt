@@ -63,7 +63,7 @@ class FgMine : Fragment() {
         registerText.setOnClickListener {
             //跳转到下一级
             var intent = Intent(context, FiveMAddDateActivity::class.java)
-            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgRegister)
+            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgAddOrg)
             startActivity(intent)
         }
         logonInText.setOnClickListener {

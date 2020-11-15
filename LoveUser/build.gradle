@@ -125,6 +125,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.14.1'
     implementation 'com.squareup.okio:okio:2.2.2'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.kaopiz:kprogresshud:1.2.0'
 
     //画廊选择
     implementation ('com.github.YancyYe:GalleryPick:1.2.1') {exclude module: 'ucrop'}
