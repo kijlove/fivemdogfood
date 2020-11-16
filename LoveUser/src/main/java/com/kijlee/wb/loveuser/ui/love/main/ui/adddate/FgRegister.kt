@@ -35,19 +35,16 @@ class FgRegister : Fragment() {
             FragmentName.FgRegister->{
                 addUserBtn.visibility = View.VISIBLE
                 logonBtn.visibility = View.GONE
-                managerLinear.visibility = View.VISIBLE
             }
             FragmentName.FgLogonIn->{
                 addUserBtn.visibility = View.GONE
                 logonBtn.visibility = View.VISIBLE
-                managerLinear.visibility = View.GONE
             }
         }
         addUserBtn.setOnClickListener {
             val user = ManagerUser()
             user.setUsername(userPhone.text.toString())
             user.setPassword(userPassword.text.toString())
-            user.managerId=managerId.text.toString()
             user.role = 1
             user.signUp(object : SaveListener<BmobUser>() {
                 override fun done(user: BmobUser?, e: BmobException?) {

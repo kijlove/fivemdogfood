@@ -19,7 +19,35 @@
             android:layout_marginBottom="1px"
             android:background="@color/white"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-            android:text="退出"></TextView>
+            android:text=""></TextView>
+
+        <TextView
+            android:id="@+id/setInviteCode"
+            style="@style/defaut_text"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="1px"
+            android:background="@color/white"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:text="设置邀请码"></TextView>
+
+        <TextView
+            android:id="@+id/setManagerIdText"
+            style="@style/defaut_text"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="1px"
+            android:background="@color/white"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:text="设置数据查看验证码"></TextView>
+
+        <TextView
+            android:id="@+id/addStaffText"
+            style="@style/defaut_text"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="1px"
+            android:background="@color/white"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:text="添加员工"></TextView>
+
         <TextView
             android:id="@+id/addDateLoveUser"
             style="@style/defaut_text"

@@ -35,6 +35,24 @@
 
             <TextView
                 style="@style/defaut_text"
+                android:text="验证码"
+                android:textSize="@dimen/small_fonts_size"></TextView>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/checkCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            style="@style/input_hint_linear">
+
+            <TextView
+                style="@style/defaut_text"
                 android:text="邀请码"
                 android:textSize="@dimen/small_fonts_size"></TextView>
 

@@ -5,6 +5,6 @@ import com.kijlee.wb.loveuser.annotations.NoArgOpenDataClass
 
 @NoArgOpenDataClass
 data class ManagerUser(var role: Int? = 0,
-                       var managerId: String? = null,//管理员id
+                       var roleCode: String? = null,//角色code
                        var orgId: String? = null//机构id
 ) : BmobUser()

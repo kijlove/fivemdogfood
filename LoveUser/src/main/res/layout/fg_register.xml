@@ -52,27 +52,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/managerLinear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/defaut_text"
-                android:text="管理员账号"></TextView>
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/managerId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@null"
-                android:inputType="textPassword"></com.google.android.material.textfield.TextInputEditText>
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
