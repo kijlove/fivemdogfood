@@ -1,11 +1,15 @@
 package com.kijlee.wb.loveuser.ui.love.main.ui.adddate
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.BmobUser
 import cn.bmob.v3.exception.BmobException
+import cn.bmob.v3.listener.FindListener
 import cn.bmob.v3.listener.SaveListener
 import cn.bmob.v3.listener.UpdateListener
 import com.google.android.material.snackbar.Snackbar
@@ -22,9 +26,9 @@ import kotlinx.android.synthetic.main.fg_add_org.*
 class Fg_AddOrg : BaseFragment() {
     var viewLayout: View? = null
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         viewLayout = inflater!!.inflate(R.layout.fg_add_org, container, false)
 
@@ -37,15 +41,53 @@ class Fg_AddOrg : BaseFragment() {
         addOrgBtn.setOnClickListener {
             showProgress()
             var orgBean = OrgBean()
-            orgBean.orgName=orgName.text.toString()
-            orgBean.inviteCode=inviteCode.text.toString()
-            orgBean.checkCode=checkCode.text.toString()
-            upDate(orgBean)
+            orgBean.orgName = orgName.text.toString()//
+//            orgBean.inviteCode = inviteCode.text.toString()//邀请码
+            orgBean.checkCode = checkCode.text.toString()//验证码
+            if (!TextUtils.isEmpty(orgName.text)) {
+                if (!TextUtils.isEmpty(userPhone.text)) {
+                    if (!TextUtils.isEmpty(inviteCode.text)) {//有邀请码就去查询父级机构
+                        selectParentsOrg(inviteCode.text.toString(), orgBean)
+                    } else {
+                        upDate(orgBean)
+                    }
+                }else{
+                    showToast("手机号为空不能登录")
+                }
+            } else {
+                showToast("机构名称为空")
+            }
 
         }
     }
 
-    fun upDate(orgBean:OrgBean){
+    fun selectParentsOrg(inviteCode: String, orgBean: OrgBean) {
+
+        //最后组装完整的and条件
+        var selectOrg = BmobQuery<OrgBean>()
+        selectOrg.addWhereEqualTo(
+                "inviteCode",
+                inviteCode
+        )
+        selectOrg.findObjects(object : FindListener<OrgBean>() {
+            override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
+                hideProgress()
+                ViseLog.e("查询结果====="+p0!!.size)
+                if (p1 == null) {
+                    if (p0 != null && p0.size == 1) {//查询到邀请码的机构得到机构id
+                        orgBean.parentsObjectId = p0[0].objectId//父级机构id
+                        upDate(orgBean)
+                    } else {
+                        showToast("邀请码错误")
+                    }
+                } else {
+                    ViseLog.e("查询失败")
+                }
+            }
+        })
+    }
+
+    fun upDate(orgBean: OrgBean) {
 
         orgBean.save(object : SaveListener<String>() {
             override fun done(p0: String?, p1: BmobException?) {
