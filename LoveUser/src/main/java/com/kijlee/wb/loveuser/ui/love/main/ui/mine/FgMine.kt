@@ -86,7 +86,6 @@ class FgMine : BaseFragment() {
 
         logonOutText.setOnClickListener {
             BmobUser.logOut()
-
             if (!BmobUser.isLogin()) {
                 Snackbar.make(addDateLoveUser!!, "退出成功", Snackbar.LENGTH_LONG).show()
                 registerText.visibility=View.VISIBLE
@@ -100,6 +99,14 @@ class FgMine : BaseFragment() {
             //跳转到下一级
             var intent = Intent(context, FiveMAddDateActivity::class.java)
             intent.putExtra(Flag.FragmentSwitch, FragmentName.FgAddOrg)
+            startActivity(intent)
+        }
+
+        //跳转全部
+        getAllOrgText.setOnClickListener {
+            //跳转到下一级
+            var intent = Intent(context, FiveMAddDateActivity::class.java)
+            intent.putExtra(Flag.FragmentSwitch, FragmentName.Fg_AllOrg)
             startActivity(intent)
         }
         logonInText.setOnClickListener {

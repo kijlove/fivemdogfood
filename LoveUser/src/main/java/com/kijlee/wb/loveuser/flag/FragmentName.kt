@@ -7,5 +7,6 @@ class FragmentName{
         val FgRegister = "FgRegister"//注册
         val FgLogonIn = "FgLogonIn"//登录
         val FgAddOrg = "FgAddOrg"//新增机构
+        val Fg_AllOrg = "Fg_AllOrg"//全部机构
     }
 }

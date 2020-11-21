@@ -59,6 +59,16 @@
 
 
         <TextView
+            android:id="@+id/getAllOrgText"
+            style="@style/defaut_text"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="1px"
+            android:background="@color/white"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:text="全部机构列表"></TextView>
+
+
+        <TextView
             android:id="@+id/logonOutText"
             style="@style/defaut_text"
             android:layout_width="match_parent"

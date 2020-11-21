@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.flag.Flag
 import com.kijlee.wb.loveuser.flag.FragmentName
+import com.kijlee.wb.loveuser.ui.love.main.ui.org.Fg_AllOrg
 
 class FiveMAddDateActivity : AppCompatActivity() {
     var flag:String?  = null
@@ -49,6 +50,13 @@ class FiveMAddDateActivity : AppCompatActivity() {
                 var fgAddorg = Fg_AddOrg()
                 var fm = supportFragmentManager!!.beginTransaction()
                 fm.replace(R.id.addFragment, fgAddorg, flag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                fm.commit()
+            }
+            FragmentName.Fg_AllOrg->{//注册机构
+                var fgAllOrg = Fg_AllOrg()
+                var fm = supportFragmentManager!!.beginTransaction()
+                fm.replace(R.id.addFragment, fgAllOrg, flag)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 fm.commit()
             }
