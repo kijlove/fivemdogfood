@@ -43,7 +43,7 @@ class FgMine : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        findMyOrg()
         addDateLoveUser.setOnClickListener {
             if (BmobUser.isLogin()) {
                 val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
@@ -169,12 +169,35 @@ class FgMine : BaseFragment() {
             logonInText.visibility = View.GONE
             logonOutText.visibility = View.VISIBLE
             userNameText.visibility = View.VISIBLE
-            userNameText.text = user.username.toString()
         } else {
             registerText.visibility = View.VISIBLE
             logonInText.visibility = View.VISIBLE
             logonOutText.visibility = View.GONE
             userNameText.visibility = View.GONE
         }
+    }
+
+    fun findMyOrg() {
+        val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
+        var query = BmobQuery<OrgBean>()
+        query.addWhereEqualTo("objectId",user.orgId!!.toString())
+                query.findObjects(object : FindListener<OrgBean>() {
+                    override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
+                        ViseLog.e("查询结果=====")
+                        userNameText.text = user.username.toString()
+                        if (p1 == null) {
+                            userNameText.text = user.username.toString()+
+                            if(p0!![0].isOpen!!){
+                            "机构已启用"
+                            }else{
+                             "机构未启用"
+                            }
+
+                        } else {
+                            ViseLog.e("查询失败"+p1.errorCode)
+                            ViseLog.e("查询失败"+user.orgId!!.toString())
+                        }
+                    }
+                })
     }
 }

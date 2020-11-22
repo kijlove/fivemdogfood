@@ -44,6 +44,7 @@ class Fg_AddOrg : BaseFragment() {
             orgBean.orgName = orgName.text.toString()//
 //            orgBean.inviteCode = inviteCode.text.toString()//邀请码
             orgBean.checkCode = checkCode.text.toString()//验证码
+            orgBean.isOpen = false//验证码
             if (!TextUtils.isEmpty(orgName.text)) {
                 if (!TextUtils.isEmpty(userPhone.text)) {
                     if (!TextUtils.isEmpty(inviteCode.text)) {//有邀请码就去查询父级机构
