@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+    <LinearLayout style="@style/input_hint_linear">
+
+        <TextView
+            style="@style/defaut_text"
+            android:text="姓名"
+            android:textSize="@dimen/small_fonts_size"></TextView>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userNameEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+
+    </LinearLayout>
+    <LinearLayout
+
+        style="@style/input_hint_linear">
+
+        <TextView
+            style="@style/defaut_text"
+            android:text="角色"
+            android:textSize="@dimen/small_fonts_size"></TextView>
+
+        <Spinner
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/role"></Spinner>
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        style="@style/input_hint_linear">
+
+        <TextView
+            style="@style/defaut_text"
+            android:text="手机号"
+            android:textSize="@dimen/small_fonts_size"></TextView>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userMobleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addStaffBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加"
+        ></Button>
+
+</LinearLayout>

@@ -7,8 +7,9 @@ import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.flag.Flag
 import com.kijlee.wb.loveuser.flag.FragmentName
 import com.kijlee.wb.loveuser.ui.love.main.ui.org.Fg_AllOrg
+import com.kijlee.wb.loveuser.ui.love.main.ui.setting.Fg_PasswordSetting
 
-class FiveMAddDateActivity : AppCompatActivity() {
+class MineSwitchActivity : AppCompatActivity() {
     var flag:String?  = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +58,13 @@ class FiveMAddDateActivity : AppCompatActivity() {
                 var fgAllOrg = Fg_AllOrg()
                 var fm = supportFragmentManager!!.beginTransaction()
                 fm.replace(R.id.addFragment, fgAllOrg, flag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                fm.commit()
+            }
+            FragmentName.Fg_PasswordSetting->{//修改密码
+                var fgPasswordSetting = Fg_PasswordSetting()
+                var fm = supportFragmentManager!!.beginTransaction()
+                fm.replace(R.id.addFragment, fgPasswordSetting, flag)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 fm.commit()
             }

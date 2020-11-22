@@ -21,7 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.kijlee.wb.loveuser.ui.love.main.ui.adddate.FiveMAddDateActivity"></activity>
+        <activity android:name="com.kijlee.wb.loveuser.ui.love.main.ui.adddate.MineSwitchActivity"></activity>
         <activity android:name="com.kijlee.wb.loveuser.ui.phptest.PhpTestActivity" />
         <activity android:name="com.kijlee.wb.loveuser.ui.love.FiveMDogFoodActivity" />
         <activity android:name="com.kijlee.wb.loveuser.ui.videos.VideosActivity" />

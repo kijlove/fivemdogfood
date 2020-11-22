@@ -96,4 +96,7 @@
         <item>澳门</item>
     </string-array>
 
+    <string-array name="role">
+        <item>编辑</item>
+    </string-array>
 </resources>

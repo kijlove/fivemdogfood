@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context=".ui.love.main.ui.mine.FgMine">
 
     <LinearLayout
@@ -18,7 +21,10 @@
             android:layout_width="match_parent"
             android:layout_marginBottom="1px"
             android:background="@color/white"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center_vertical"
             android:text=""></TextView>
 
         <TextView
@@ -28,6 +34,9 @@
             android:layout_marginBottom="1px"
             android:background="@color/white"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:text="设置邀请码"></TextView>
 
         <TextView
@@ -37,6 +46,9 @@
             android:layout_marginBottom="1px"
             android:background="@color/white"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:text="设置数据查看验证码"></TextView>
 
         <TextView
@@ -46,6 +58,9 @@
             android:layout_marginBottom="1px"
             android:background="@color/white"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:text="添加员工"></TextView>
 
         <TextView
@@ -55,8 +70,10 @@
             android:layout_marginBottom="1px"
             android:background="@color/white"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:text="添加用户数据"></TextView>
-
 
         <TextView
             android:id="@+id/getAllOrgText"
@@ -65,7 +82,22 @@
             android:layout_marginBottom="1px"
             android:background="@color/white"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:text="全部机构列表"></TextView>
+        <TextView
+            android:id="@+id/changePasswordText"
+            style="@style/defaut_text"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="1px"
+            android:background="@color/white"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:text="修改密码"></TextView>
+
 
 
         <TextView
@@ -75,6 +107,9 @@
             android:layout_marginBottom="1px"
             android:background="@color/white"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:text="退出"></TextView>
 
         <TextView
@@ -84,6 +119,9 @@
             android:layout_marginBottom="1px"
             android:background="@color/white"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:text="登陆"></TextView>
 
         <TextView
@@ -93,6 +131,9 @@
             android:layout_marginBottom="1px"
             android:background="@color/white"
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:text="注册"></TextView>
     </LinearLayout>
 

@@ -386,7 +386,7 @@ class FgEditDateLoveUser : Fragment() {
 
         } else {
             //跳转到下一级
-            var intent = Intent(context, FiveMAddDateActivity::class.java)
+            var intent = Intent(context, MineSwitchActivity::class.java)
             intent.putExtra(Flag.FragmentSwitch, FragmentName.FgLogonIn)
             startActivity(intent)
         }

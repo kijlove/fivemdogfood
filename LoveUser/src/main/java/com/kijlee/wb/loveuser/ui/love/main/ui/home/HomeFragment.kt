@@ -12,7 +12,6 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import cn.bmob.v3.BmobQuery
-import cn.bmob.v3.BmobUser
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
 import com.kijlee.wb.loveuser.R
@@ -20,7 +19,7 @@ import com.kijlee.wb.loveuser.entity.loveuser.LoveUserBean
 import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
 import com.kijlee.wb.loveuser.flag.Flag
 import com.kijlee.wb.loveuser.flag.FragmentName
-import com.kijlee.wb.loveuser.ui.love.main.ui.adddate.FiveMAddDateActivity
+import com.kijlee.wb.loveuser.ui.love.main.ui.adddate.MineSwitchActivity
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
 import com.squareup.picasso.Picasso
@@ -71,7 +70,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         }
         fiveMUserAdapter.setOnItemClickListener { adapter, view, position ->
                 //编辑用户信息
-                var intent = Intent(context, FiveMAddDateActivity::class.java)
+                var intent = Intent(context, MineSwitchActivity::class.java)
                 intent.putExtra(Flag.FragmentSwitch, FragmentName.FgEditDateSm)
                 intent.putExtra(Flag.ToNextBean, adapter.getItem(position) as LoveUserBean)
                 startActivity(intent)

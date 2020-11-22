@@ -1,33 +1,21 @@
 package com.kijlee.wb.loveuser.ui.love.main.ui.org
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import cn.bmob.v3.BmobInstallationManager
 import cn.bmob.v3.BmobQuery
-import cn.bmob.v3.BmobUser
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
 import cn.bmob.v3.listener.UpdateListener
 import com.google.android.material.snackbar.Snackbar
 import com.kijlee.wb.loveuser.R
-import com.kijlee.wb.loveuser.adapter.StringAdapter
 import com.kijlee.wb.loveuser.base.BaseFragment
-import com.kijlee.wb.loveuser.entity.loveuser.LoveUserBean
-import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
 import com.kijlee.wb.loveuser.entity.loveuser.OrgBean
-import com.kijlee.wb.loveuser.flag.Flag
-import com.kijlee.wb.loveuser.flag.FragmentName
-import com.kijlee.wb.loveuser.ui.love.main.ui.adddate.FiveMAddDateActivity
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
 import com.vise.log.ViseLog
 import kotlinx.android.synthetic.main.fg_add_fivem_user.*
-import kotlinx.android.synthetic.main.fg_add_org.*
-import kotlinx.android.synthetic.main.fg_mine.*
 import kotlinx.android.synthetic.main.layout_recyclerview.*
 
 /***
@@ -53,6 +41,7 @@ class Fg_AllOrg : BaseFragment() {
         recyclerView.adapter = adapter
         var orgBeanQuery = BmobQuery<OrgBean>()
         orgBeanQuery.setPage(1, 10)
+//        orgBeanQuery.addQueryKeys("parentsObjectId","")
         orgBeanQuery.findObjects(object : FindListener<OrgBean>() {
             override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
                 ViseLog.e("查询结果=====")
@@ -127,5 +116,6 @@ class Fg_AllOrg : BaseFragment() {
                     }
                     dialog.dismiss()
                 }
+                .create().show()
     }
 }
