@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import cn.bmob.v3.BmobQuery
+import cn.bmob.v3.BmobUser
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
 import cn.bmob.v3.listener.UpdateListener
 import com.google.android.material.snackbar.Snackbar
 import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.base.BaseFragment
+import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
 import com.kijlee.wb.loveuser.entity.loveuser.OrgBean
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
@@ -38,10 +40,11 @@ class Fg_AllOrg : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
         recyclerView.adapter = adapter
         var orgBeanQuery = BmobQuery<OrgBean>()
         orgBeanQuery.setPage(1, 10)
-//        orgBeanQuery.addQueryKeys("parentsObjectId","")
+        orgBeanQuery.addWhereEqualTo("parentsObjectId",user.orgId!!.toString())
         orgBeanQuery.findObjects(object : FindListener<OrgBean>() {
             override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
                 ViseLog.e("查询结果=====")
