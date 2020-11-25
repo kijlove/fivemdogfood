@@ -9,5 +9,6 @@ class FragmentName{
         val FgAddOrg = "FgAddOrg"//新增机构
         val Fg_AllOrg = "Fg_AllOrg"//全部机构
         val Fg_PasswordSetting = "Fg_PasswordSetting"//修改密码
+        val Fg_AddStaff = "Fg_AddStaff"//录入员工
     }
 }

@@ -54,7 +54,7 @@ class MineSwitchActivity : AppCompatActivity() {
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 fm.commit()
             }
-            FragmentName.Fg_AllOrg->{//注册机构
+            FragmentName.Fg_AllOrg->{//全部机构
                 var fgAllOrg = Fg_AllOrg()
                 var fm = supportFragmentManager!!.beginTransaction()
                 fm.replace(R.id.addFragment, fgAllOrg, flag)
@@ -65,6 +65,13 @@ class MineSwitchActivity : AppCompatActivity() {
                 var fgPasswordSetting = Fg_PasswordSetting()
                 var fm = supportFragmentManager!!.beginTransaction()
                 fm.replace(R.id.addFragment, fgPasswordSetting, flag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                fm.commit()
+            }
+            FragmentName.Fg_AddStaff->{//添加员工
+                var fgAddStaff = Fg_AddStaff()
+                var fm = supportFragmentManager!!.beginTransaction()
+                fm.replace(R.id.addFragment,fgAddStaff, flag)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 fm.commit()
             }

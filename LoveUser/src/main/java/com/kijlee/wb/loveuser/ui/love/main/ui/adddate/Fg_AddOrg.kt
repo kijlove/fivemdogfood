@@ -75,9 +75,13 @@ class Fg_AddOrg : BaseFragment() {
                 hideProgress()
                 ViseLog.e("查询结果====="+p0!!.size)
                 if (p1 == null) {
-                    if (p0 != null && p0.size == 1) {//查询到邀请码的机构得到机构id
-                        orgBean.parentsObjectId = p0[0].objectId//父级机构id
-                        upDate(orgBean)
+                    if (p0 != null && p0.size == 1 ) {//查询到邀请码的机构得到机构id
+                        if(  p0[0].isOpen!!){
+                            orgBean.parentsObjectId = p0[0].objectId//父级机构id
+                            upDate(orgBean)
+                        }else{
+                            showToast("加盟机构尚未营业")
+                        }
                     } else {
                         showToast("邀请码错误")
                     }

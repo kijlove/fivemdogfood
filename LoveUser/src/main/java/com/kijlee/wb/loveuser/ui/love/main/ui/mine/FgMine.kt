@@ -120,6 +120,14 @@ class FgMine : BaseFragment() {
             intent.putExtra(Flag.FragmentSwitch, FragmentName.Fg_PasswordSetting)
             startActivity(intent)
         }
+
+        //添加员工
+        addStaffText.setOnClickListener {
+            //跳转到下一级
+            var intent = Intent(context, MineSwitchActivity::class.java)
+            intent.putExtra(Flag.FragmentSwitch, FragmentName.Fg_AddStaff)
+            startActivity(intent)
+        }
     }
 
     fun setInviteCode(inviteCode: String) {
