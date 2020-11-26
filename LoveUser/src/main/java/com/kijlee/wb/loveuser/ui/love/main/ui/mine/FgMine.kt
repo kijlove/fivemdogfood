@@ -44,6 +44,14 @@ class FgMine : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         findMyOrg()
+        //获取全部人员列表
+        getAllStaffText.setOnClickListener {
+
+            //跳转到下一级
+            var intent = Intent(context, MineSwitchActivity::class.java)
+            intent.putExtra(Flag.FragmentSwitch, FragmentName.Fg_AllStaff)
+            startActivity(intent)
+        }
         addDateLoveUser.setOnClickListener {
             if (BmobUser.isLogin()) {
                 val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
@@ -177,11 +185,15 @@ class FgMine : BaseFragment() {
             logonInText.visibility = View.GONE
             logonOutText.visibility = View.VISIBLE
             userNameText.visibility = View.VISIBLE
+            changePasswordText.visibility = View.VISIBLE
+            getAllStaffText.visibility = View.VISIBLE
         } else {
+            changePasswordText.visibility = View.GONE
             registerText.visibility = View.VISIBLE
             logonInText.visibility = View.VISIBLE
             logonOutText.visibility = View.GONE
             userNameText.visibility = View.GONE
+            getAllStaffText.visibility = View.GONE
         }
     }
 
@@ -199,6 +211,19 @@ class FgMine : BaseFragment() {
                             "机构已启用"
                             }else{
                              "机构未启用"
+                            }
+                            if(p0!![0].isOpen!!){
+                                setInviteCode.visibility = View.VISIBLE
+                                setManagerIdText.visibility = View.VISIBLE
+                                addStaffText.visibility = View.VISIBLE
+                                addDateLoveUser.visibility = View.VISIBLE
+                                getAllOrgText.visibility = View.VISIBLE
+                            }else{
+                                setInviteCode.visibility = View.GONE
+                                setManagerIdText.visibility = View.GONE
+                                addStaffText.visibility = View.GONE
+                                addDateLoveUser.visibility = View.GONE
+                                getAllOrgText.visibility = View.GONE
                             }
 
                         } else {

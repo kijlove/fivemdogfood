@@ -7,6 +7,7 @@ import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.flag.Flag
 import com.kijlee.wb.loveuser.flag.FragmentName
 import com.kijlee.wb.loveuser.ui.love.main.ui.org.Fg_AllOrg
+import com.kijlee.wb.loveuser.ui.love.main.ui.org.Fg_AllStaff
 import com.kijlee.wb.loveuser.ui.love.main.ui.setting.Fg_PasswordSetting
 
 class MineSwitchActivity : AppCompatActivity() {
@@ -72,6 +73,13 @@ class MineSwitchActivity : AppCompatActivity() {
                 var fgAddStaff = Fg_AddStaff()
                 var fm = supportFragmentManager!!.beginTransaction()
                 fm.replace(R.id.addFragment,fgAddStaff, flag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                fm.commit()
+            }
+            FragmentName.Fg_AllStaff->{//全部员工
+                var fgAllStaff = Fg_AllStaff()
+                var fm = supportFragmentManager!!.beginTransaction()
+                fm.replace(R.id.addFragment,fgAllStaff, flag)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 fm.commit()
             }
