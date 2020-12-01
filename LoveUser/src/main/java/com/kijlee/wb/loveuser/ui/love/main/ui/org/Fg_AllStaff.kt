@@ -46,7 +46,7 @@ class Fg_AllStaff:BaseFragment() {
         recyclerView.adapter = adapter
         var orgBeanQuery = BmobQuery<ManagerUser>()
         orgBeanQuery.setPage(1, 10)
-        orgBeanQuery.addWhereEqualTo("oid",user.orgId!!.toString())
+        orgBeanQuery.addWhereEqualTo("orgId",user.orgId!!.toString())
         orgBeanQuery.findObjects(object : FindListener<ManagerUser>() {
             override fun done(p0: MutableList<ManagerUser>?, p1: BmobException?) {
                 ViseLog.e("查询结果=====")
