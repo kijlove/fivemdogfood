@@ -39,28 +39,32 @@ class Fg_AddStaff : BaseFragment() {
             //申请机构
             val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
 
-            var staffBean = StaffBean()
+            var staffBean = ManagerUser()
             when(roleSpinner.selectedItem.toString()){
                 "编辑"->{
-                    staffBean.role = "editer"
+                    staffBean.roleCode = "editer"
                 }
             }
-            staffBean.oid = user.orgId.toString()
-            staffBean.userName = userNameEdit.text.toString()
-            staffBean.moblePhone = userMobleText.text.toString()
-            staffBean.save(object : SaveListener<String>() {
-                override fun done(p0: String?, p1: BmobException?) {
-                    hideProgress()
-                    if (p1 == null) {
-
-                        Snackbar.make(
-                            viewLayout!!,
-                            "注册成功" ,
-                            Snackbar.LENGTH_LONG
-                        ).show()
-
+            staffBean.orgId = user.orgId.toString()
+            staffBean.realName = userNameEdit.text.toString()
+            staffBean.username = userMobleText.text.toString()
+            staffBean.setPassword(userMobleText.text.toString().substring(userMobleText.text.toString().length-6,userMobleText.text.toString().length))
+            ViseLog.e(userMobleText.text.toString().substring(userMobleText.text.toString().length-6,userMobleText.text.toString().length))
+            staffBean.mobilePhoneNumber = userMobleText.text.toString()
+            staffBean.signUp(object : SaveListener<BmobUser>() {
+                override fun done(user: BmobUser?, e: BmobException?) {
+                    if (e == null) {
+                        Snackbar.make(viewLayout!!, "注册成功", Snackbar.LENGTH_LONG).show()
+                        activity!!.finish()
+                    } else {
+                        ViseLog.e("注册失败：" + e.errorCode+e.message)
+                        if(e.errorCode == 202){
+                            Snackbar.make(viewLayout!!, "注册成功", Snackbar.LENGTH_LONG).show()
+                            activity!!.finish()
+                        }else{
+                            Snackbar.make(viewLayout!!, "注册失败：" + e.errorCode+e.message, Snackbar.LENGTH_LONG).show()
+                        }
                     }
-
                 }
             })
         }

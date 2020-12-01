@@ -44,7 +44,7 @@ class ShowApiActivity : BaseActivity() {
 //        RetrofitUrlManager.getInstance().setRun(false)
         NetWorkManager.instance.showApiServices!!.allTypeList(
             "b2f3a718a48d4e5abb15d159843eb086",
-            "3146"
+            "126-1"
         )
             //设置事件触发在非主线程
             .subscribeOn(Schedulers.io())

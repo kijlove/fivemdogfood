@@ -28,7 +28,7 @@ class Fg_AllStaff:BaseFragment() {
 
     var viewLayout: View? = null
     var adapter: StaffsAdapter? = null
-    var stringArray: MutableList<StaffBean>? = ArrayList()
+    var stringArray: MutableList<ManagerUser>? = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,11 +44,11 @@ class Fg_AllStaff:BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
         recyclerView.adapter = adapter
-        var orgBeanQuery = BmobQuery<StaffBean>()
+        var orgBeanQuery = BmobQuery<ManagerUser>()
         orgBeanQuery.setPage(1, 10)
         orgBeanQuery.addWhereEqualTo("oid",user.orgId!!.toString())
-        orgBeanQuery.findObjects(object : FindListener<StaffBean>() {
-            override fun done(p0: MutableList<StaffBean>?, p1: BmobException?) {
+        orgBeanQuery.findObjects(object : FindListener<ManagerUser>() {
+            override fun done(p0: MutableList<ManagerUser>?, p1: BmobException?) {
                 ViseLog.e("查询结果=====")
                 if (p1 == null) {
                     adapter!!.setList(p0)

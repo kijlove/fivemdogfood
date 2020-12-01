@@ -49,6 +49,7 @@
             android:id="@+id/userMobleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:layout_gravity="center_vertical"
             android:background="@null"></com.google.android.material.textfield.TextInputEditText>
 

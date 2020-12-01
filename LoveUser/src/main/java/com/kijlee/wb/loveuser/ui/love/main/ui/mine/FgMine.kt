@@ -187,6 +187,7 @@ class FgMine : BaseFragment() {
             userNameText.visibility = View.VISIBLE
             changePasswordText.visibility = View.VISIBLE
             getAllStaffText.visibility = View.VISIBLE
+            setInviteCode.visibility = View.VISIBLE
         } else {
             changePasswordText.visibility = View.GONE
             registerText.visibility = View.VISIBLE
@@ -194,43 +195,47 @@ class FgMine : BaseFragment() {
             logonOutText.visibility = View.GONE
             userNameText.visibility = View.GONE
             getAllStaffText.visibility = View.GONE
+            setInviteCode.visibility = View.GONE
         }
     }
 
     fun findMyOrg() {
-        val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
-        var query = BmobQuery<OrgBean>()
-        query.addWhereEqualTo("objectId",user.orgId!!.toString())
-                query.findObjects(object : FindListener<OrgBean>() {
-                    override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
-                        ViseLog.e("查询结果=====")
-                        userNameText.text = user.username.toString()
-                        if (p1 == null) {
-                            userNameText.text = user.username.toString()+
-                            if(p0!![0].isOpen!!){
-                            "机构已启用"
-                            }else{
-                             "机构未启用"
-                            }
-                            if(p0!![0].isOpen!!){
-                                setInviteCode.visibility = View.VISIBLE
-                                setManagerIdText.visibility = View.VISIBLE
-                                addStaffText.visibility = View.VISIBLE
-                                addDateLoveUser.visibility = View.VISIBLE
-                                getAllOrgText.visibility = View.VISIBLE
-                            }else{
-                                setInviteCode.visibility = View.GONE
-                                setManagerIdText.visibility = View.GONE
-                                addStaffText.visibility = View.GONE
-                                addDateLoveUser.visibility = View.GONE
-                                getAllOrgText.visibility = View.GONE
-                            }
-
-                        } else {
-                            ViseLog.e("查询失败"+p1.errorCode)
-                            ViseLog.e("查询失败"+user.orgId!!.toString())
+        val user: ManagerUser? = BmobUser.getCurrentUser(ManagerUser::class.java)
+        if(user!=null){
+            var query = BmobQuery<OrgBean>()
+            query.addWhereEqualTo("objectId",user.orgId!!.toString())
+            query.findObjects(object : FindListener<OrgBean>() {
+                override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
+                    ViseLog.e("查询结果=====")
+                    userNameText.text = user.username.toString()
+                    if (p1 == null) {
+                        userNameText.text = user.username.toString()+
+                                if(p0!![0].isOpen!!){
+                                    "机构已启用"
+                                }else{
+                                    "机构未启用"
+                                }
+                        if(p0!![0].isOpen!!){
+                            setInviteCode.visibility = View.VISIBLE
+                            setManagerIdText.visibility = View.VISIBLE
+                            addStaffText.visibility = View.VISIBLE
+                            addDateLoveUser.visibility = View.VISIBLE
+                            getAllOrgText.visibility = View.VISIBLE
+                        }else{
+                            setInviteCode.visibility = View.GONE
+                            setManagerIdText.visibility = View.GONE
+                            addStaffText.visibility = View.GONE
+                            addDateLoveUser.visibility = View.GONE
+                            getAllOrgText.visibility = View.GONE
                         }
+
+                    } else {
+                        ViseLog.e("查询失败"+p1.errorCode)
+                        ViseLog.e("查询失败"+user.orgId!!.toString())
                     }
-                })
+                }
+            })
+        }
+
     }
 }
