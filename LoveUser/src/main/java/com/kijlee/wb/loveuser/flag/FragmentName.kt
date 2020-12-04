@@ -5,7 +5,7 @@ class FragmentName{
         val FgAddDateSm = "FgAddDateSm"//新增
         val FgEditDateSm = "FgEditDateSm"//编辑
         val FgRegister = "FgRegister"//注册
-        val FgLogonIn = "FgLogonIn"//登录
+        val FgLogin = "FgLogin"//登录
         val FgAddOrg = "FgAddOrg"//新增机构
         val Fg_AllStaff = "Fg_AllStaff"//全部员工
         val Fg_AllOrg = "Fg_AllOrg"//全部机构

@@ -12,5 +12,8 @@ import com.kijlee.wb.loveuser.annotations.NoArgOpenDataClass
 data class StaffBean (var role: Int? = 0,
 var roleCode: String? = null,//角色code
 var realName: String? = null,//姓名
+var phone: String? = null,//手机号
+var username: String? = null,//登录名
+var password: String? = null,//密码
 var orgId: String? = null//机构id
-) : BmobUser()
+) : BmobObject()

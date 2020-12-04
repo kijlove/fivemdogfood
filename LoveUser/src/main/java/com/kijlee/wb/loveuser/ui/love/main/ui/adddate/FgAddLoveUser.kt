@@ -293,7 +293,7 @@ class FgAddLoveUser : Fragment() {
         } else {
             //跳转到下一级
             var intent = Intent(context, MineSwitchActivity::class.java)
-            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgLogonIn)
+            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgLogin)
             startActivity(intent)
         }
     }

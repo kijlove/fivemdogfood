@@ -1,76 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_vertical_margin">
+
+
+    <LinearLayout
+
+        style="@style/input_hint_linear">
+
+        <TextView
+            style="@style/defaut_text"
+            android:text="邀请码"
+            android:textSize="@dimen/small_fonts_size"></TextView>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inviteCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        style="@style/input_hint_linear">
+
+        <TextView
+            style="@style/defaut_text"
+            android:text="姓名"
+            android:textSize="@dimen/small_fonts_size"></TextView>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userNameEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        style="@style/input_hint_linear">
+
+        <TextView
+            style="@style/defaut_text"
+            android:text="角色"
+            android:textSize="@dimen/small_fonts_size"></TextView>
+
+        <Spinner
+            android:id="@+id/roleSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/role"></Spinner>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_vertical_margin">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/bg_input"
+        android:orientation="horizontal">
 
+        <TextView
+            style="@style/defaut_text"
+            android:text="手机号"></TextView>
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/defaut_text"
-                android:text="手机号"></TextView>
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/userPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@null"
-                android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/defaut_text"
-                android:text="密码"></TextView>
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/userPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@null"
-                android:inputType="textPassword"></com.google.android.material.textfield.TextInputEditText>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/addUserBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="注册"></Button>
-
-            <Button
-                android:id="@+id/logonBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="登陆"></Button>
-        </LinearLayout>
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/bg_input"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/defaut_text"
+            android:text="密码"></TextView>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:inputType="textPassword"></com.google.android.material.textfield.TextInputEditText>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/addUserBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="注册"></Button>
+
+</LinearLayout>

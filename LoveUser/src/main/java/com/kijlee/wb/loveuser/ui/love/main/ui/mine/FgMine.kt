@@ -105,7 +105,7 @@ class FgMine : BaseFragment() {
         registerText.setOnClickListener {
             //跳转到下一级
             var intent = Intent(context, MineSwitchActivity::class.java)
-            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgAddOrg)
+            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgRegister)
             startActivity(intent)
         }
 
@@ -119,7 +119,7 @@ class FgMine : BaseFragment() {
         logonInText.setOnClickListener {
             //跳转到下一级
             var intent = Intent(context, MineSwitchActivity::class.java)
-            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgLogonIn)
+            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgLogin)
             startActivity(intent)
         }
         changePasswordText.setOnClickListener {
@@ -180,7 +180,6 @@ class FgMine : BaseFragment() {
         super.onResume()
 
         if (BmobUser.isLogin()) {
-            val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
             registerText.visibility = View.GONE
             logonInText.visibility = View.GONE
             logonOutText.visibility = View.VISIBLE
@@ -200,8 +199,9 @@ class FgMine : BaseFragment() {
     }
 
     fun findMyOrg() {
-        val user: ManagerUser? = BmobUser.getCurrentUser(ManagerUser::class.java)
-        if(user!=null){
+        if(BmobUser.isLogin()){
+            val user: ManagerUser? = BmobUser.getCurrentUser(ManagerUser::class.java)
+            ViseLog.e("user.username=="+user!!.username)
             var query = BmobQuery<OrgBean>()
             query.addWhereEqualTo("objectId",user.orgId!!.toString())
             query.findObjects(object : FindListener<OrgBean>() {

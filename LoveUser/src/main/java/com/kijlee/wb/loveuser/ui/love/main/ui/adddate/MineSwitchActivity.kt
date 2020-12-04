@@ -1,7 +1,7 @@
 package com.kijlee.wb.loveuser.ui.love.main.ui.adddate
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.flag.Flag
@@ -27,13 +27,23 @@ class MineSwitchActivity : AppCompatActivity() {
 //                    .addToBackStack(null)
                 fm.commit()
             }
-            FragmentName.FgRegister,FragmentName.FgLogonIn->{
+            FragmentName.FgRegister->{
                 var fgRegister = FgRegister()
                 var fm = supportFragmentManager!!.beginTransaction()
                 var bundle=Bundle()
                 bundle.putString(Flag.FragmentSwitch,flag)
                 fgRegister .arguments = bundle
                 fm.replace(R.id.addFragment, fgRegister, flag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                fm.commit()
+            }
+            FragmentName.FgLogin->{
+                var fgLogin = Fg_Login()
+                var fm = supportFragmentManager!!.beginTransaction()
+                var bundle=Bundle()
+                bundle.putString(Flag.FragmentSwitch,flag)
+                fgLogin .arguments = bundle
+                fm.replace(R.id.addFragment, fgLogin, flag)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 fm.commit()
             }
@@ -49,7 +59,7 @@ class MineSwitchActivity : AppCompatActivity() {
                 fm.commit()
             }
             FragmentName.FgAddOrg->{//注册机构
-                var fgAddorg = Fg_AddOrg()
+                var fgAddorg = Fg_OrgSign()
                 var fm = supportFragmentManager!!.beginTransaction()
                 fm.replace(R.id.addFragment, fgAddorg, flag)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -70,7 +80,7 @@ class MineSwitchActivity : AppCompatActivity() {
                 fm.commit()
             }
             FragmentName.Fg_AddStaff->{//添加员工
-                var fgAddStaff = Fg_AddStaff()
+                var fgAddStaff = Fg_Login()
                 var fm = supportFragmentManager!!.beginTransaction()
                 fm.replace(R.id.addFragment,fgAddStaff, flag)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)

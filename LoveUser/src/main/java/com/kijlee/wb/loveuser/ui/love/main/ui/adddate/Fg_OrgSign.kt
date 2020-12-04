@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fg_add_org.*
 /**
  * 新增机构界面
  */
-class Fg_AddOrg : BaseFragment() {
+class Fg_OrgSign : BaseFragment() {
     var viewLayout: View? = null
     override fun onCreateView(
             inflater: LayoutInflater,
