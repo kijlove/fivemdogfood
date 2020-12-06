@@ -137,6 +137,7 @@
                 android:id="@+id/income"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
                 android:layout_gravity="center_vertical"
                 android:background="@null"></com.google.android.material.textfield.TextInputEditText>
         </LinearLayout>

@@ -200,7 +200,7 @@ class FgAddLoveUser : Fragment() {
 
         if (BmobUser.isLogin()) {
             val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
-            userBean.managerId = user.objectId
+            userBean.managerId = user.orgId
             userBean.city = city.selectedItem.toString()
             userBean.academic = academic.selectedItem.toString()
             userBean.attribute = attribute.text.toString()

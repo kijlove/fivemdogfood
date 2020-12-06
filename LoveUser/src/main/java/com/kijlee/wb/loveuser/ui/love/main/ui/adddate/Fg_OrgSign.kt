@@ -17,6 +17,7 @@ import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.base.BaseFragment
 import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
 import com.kijlee.wb.loveuser.entity.loveuser.OrgBean
+import com.kijlee.wb.loveuser.entity.loveuser.RoleCode
 import com.vise.log.ViseLog
 import kotlinx.android.synthetic.main.fg_add_org.*
 
@@ -42,7 +43,6 @@ class Fg_OrgSign : BaseFragment() {
             showProgress()
             var orgBean = OrgBean()
             orgBean.orgName = orgName.text.toString()//
-//            orgBean.inviteCode = inviteCode.text.toString()//邀请码
             orgBean.checkCode = checkCode.text.toString()//验证码
             orgBean.isOpen = false//验证码
             if (!TextUtils.isEmpty(orgName.text)) {
@@ -103,6 +103,7 @@ class Fg_OrgSign : BaseFragment() {
                     user.setUsername(userPhone.text.toString())
                     user.setPassword(userPassword.text.toString())
                     user.orgId = p0
+                    user.roleCode = RoleCode.BOSS
                     user.role = 1
                     user.signUp(object : SaveListener<BmobUser>() {
                         override fun done(user: BmobUser?, e: BmobException?) {

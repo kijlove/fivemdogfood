@@ -8,7 +8,7 @@ import cn.bmob.v3.datatype.BmobFile
  */
 class LoveUserBean : BmobObject() {
     var numCode: String? = null//编号
-    var managerId: String? = null//管理者id
+    var managerId: String? = null//机构id
     var city: String? = null//位置
     var academic: String? = null//学历
     var income: String? = null//收入状况

@@ -79,13 +79,7 @@ class MineSwitchActivity : AppCompatActivity() {
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 fm.commit()
             }
-            FragmentName.Fg_AddStaff->{//添加员工
-                var fgAddStaff = Fg_Login()
-                var fm = supportFragmentManager!!.beginTransaction()
-                fm.replace(R.id.addFragment,fgAddStaff, flag)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                fm.commit()
-            }
+
             FragmentName.Fg_AllStaff->{//全部员工
                 var fgAllStaff = Fg_AllStaff()
                 var fm = supportFragmentManager!!.beginTransaction()

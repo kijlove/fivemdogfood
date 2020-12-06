@@ -17,6 +17,7 @@ import cn.bmob.v3.listener.FindListener
 import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.entity.loveuser.LoveUserBean
 import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
+import com.kijlee.wb.loveuser.entity.loveuser.OrgBean
 import com.kijlee.wb.loveuser.flag.Flag
 import com.kijlee.wb.loveuser.flag.FragmentName
 import com.kijlee.wb.loveuser.ui.love.main.ui.adddate.MineSwitchActivity
@@ -109,13 +110,13 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     fun getManagerId(string: String) {
 
         //最后组装完整的and条件
-        var bmobUser2 = BmobQuery<ManagerUser>()
+        var bmobUser2 = BmobQuery<OrgBean>()
         bmobUser2.addWhereEqualTo(
-            "managerId",
+            "checkCode",
             string
         )
-        bmobUser2.findObjects(object : FindListener<ManagerUser>() {
-            override fun done(p0: MutableList<ManagerUser>?, p1: BmobException?) {
+        bmobUser2.findObjects(object : FindListener<OrgBean>() {
+            override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
                 ViseLog.e("查询结果=====")
                 if (p1 == null) {
                     managerId = p0!!.get(0)!!.objectId

@@ -15,6 +15,7 @@ import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.base.BaseFragment
 import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
 import com.kijlee.wb.loveuser.entity.loveuser.OrgBean
+import com.kijlee.wb.loveuser.entity.loveuser.RoleCode
 import com.vise.log.ViseLog
 
 import kotlinx.android.synthetic.main.fg_register.*
@@ -63,7 +64,8 @@ class Fg_StaffSign : BaseFragment() {
                             var staffBean = ManagerUser()
                             when (roleSpinner.selectedItem.toString()) {
                                 "编辑" -> {
-                                    staffBean.roleCode = "editer"
+                                    staffBean.roleCode = RoleCode.EDITER
+                                    staffBean.role = 99
                                 }
                             }
                             staffBean.orgId = p0[0].objectId.toString()

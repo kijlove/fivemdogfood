@@ -126,7 +126,7 @@ class FgEditDateLoveUser : Fragment() {
             carImageViewAdapter
         if (BmobUser.isLogin()) {
             val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
-            if (userBean!!.managerId == user.objectId) {
+            if (userBean!!.managerId == user.orgId) {
                 viewLayout!!.findViewById<Button>(R.id.addUserBtn).visibility = View.VISIBLE
                 viewLayout!!.findViewById<Button>(R.id.delUserBtn).visibility = View.VISIBLE
             } else {
@@ -200,10 +200,7 @@ class FgEditDateLoveUser : Fragment() {
         }
         //上传用户资料
         delUserBtn.setOnClickListener {
-            if (BmobUser.isLogin() && BmobUser.getCurrentUser(ManagerUser::class.java).objectId.equals(
-                    userBean!!.managerId
-                )
-            ) {
+            if (BmobUser.isLogin() && BmobUser.getCurrentUser(ManagerUser::class.java).objectId.equals(userBean!!.managerId)) {
                 if (userBean!!.userImages != null && userBean!!.userImages!!.size > 0) {
                     for (i in userBean!!.userImages!!) {
 
@@ -461,7 +458,7 @@ class FgEditDateLoveUser : Fragment() {
             imageViewEditBean.imagePath = s.fileUrl
             if (BmobUser.isLogin()) {
                 val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
-                if (userBean!!.managerId == user.objectId) {
+                if (userBean!!.managerId == user.orgId) {
                     imageViewEditBean.isShowDelIcon = false
                 } else {
                     imageViewEditBean.isShowDelIcon = true

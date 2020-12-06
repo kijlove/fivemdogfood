@@ -10,6 +10,5 @@ class FragmentName{
         val Fg_AllStaff = "Fg_AllStaff"//全部员工
         val Fg_AllOrg = "Fg_AllOrg"//全部机构
         val Fg_PasswordSetting = "Fg_PasswordSetting"//修改密码
-        val Fg_AddStaff = "Fg_AddStaff"//录入员工
     }
 }
