@@ -106,7 +106,7 @@ class FgMine : BaseFragment() {
                             val text = builder.editText.text
                             if (text != null && text.length > 0) {
                                 dialog.dismiss()
-                                setInviteCode(text.toString())
+                                setManagerIdText(text.toString())
                             } else {
                                 Toast.makeText(activity, "输入管理员账号", Toast.LENGTH_SHORT).show()
                             }
@@ -206,7 +206,7 @@ class FgMine : BaseFragment() {
                 ViseLog.e("查询结果=====" + p0!!.size)
                 if (p1 == null) {
                     if (p0 != null && p0.size == 1) {//查询到邀请码的机构得到机构id
-                        p0[0].inviteCode = managerId//父级机构id
+                        p0[0].checkCode = managerId//父级机构id
                         p0[0].update(object : UpdateListener() {
                             override fun done(p0: BmobException?) {
                                 if (p0 == null) {

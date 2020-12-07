@@ -41,6 +41,14 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {//签名的配置
+        release {
+            storeFile file("loveruser.jks")
+            storePassword '123123'
+            keyAlias 'loveruser'
+            keyPassword '123123'
+        }
+    }
 
     buildTypes {
         release {
