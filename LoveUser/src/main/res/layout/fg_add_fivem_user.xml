@@ -41,8 +41,13 @@
                 android:textSize="@dimen/small_fonts_size"></TextView>
 
             <Spinner
+                android:id="@+id/province"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/local"></Spinner>
+            <Spinner
                 android:id="@+id/city"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/local"></Spinner>
         </LinearLayout>
@@ -137,9 +142,9 @@
                 android:id="@+id/income"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
                 android:layout_gravity="center_vertical"
-                android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+                android:background="@null"
+                android:inputType="numberDecimal"></com.google.android.material.textfield.TextInputEditText>
         </LinearLayout>
 
 

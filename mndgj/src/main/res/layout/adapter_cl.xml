@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="3.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/dzer_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="1" android:layout_weight="1.0" />
+    <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/gleb_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="2" android:layout_weight="1.0" />
+    <TextView android:textSize="20.0sp" android:gravity="center" android:id="@id/error_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="3" android:layout_weight="1.0" />
+</LinearLayout>

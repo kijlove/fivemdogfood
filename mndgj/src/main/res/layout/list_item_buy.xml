@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="24.0dip" android:gravity="center" android:id="@id/id_batch" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="购入批次" android:layout_weight="1.0" />
+    <View android:background="#ffffffff" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="24.0dip" android:gravity="center" android:id="@id/id_supplier" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="供应商" android:layout_weight="1.0" />
+    <View android:background="#ffffffff" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="24.0dip" android:gravity="center" android:id="@id/id_count" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="购入数量（头）" android:layout_weight="1.0" />
+    <View android:background="#ffffffff" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="24.0dip" android:gravity="center" android:id="@id/id_time" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="购入时间" android:layout_weight="1.0" />
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/login_head_bg1" android:layout_width="fill_parent" android:layout_height="200.0dip">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/logo" android:layout_above="@id/head_center_line" android:layout_centerHorizontal="true" />
+        <View android:id="@id/head_center_line" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_centerVertical="true" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_below="@id/head_center_line" android:layout_centerHorizontal="true">
+            <TextView android:textSize="20.0sp" android:textColor="@android:color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/app_name" android:layout_centerHorizontal="true" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <EditText android:textColor="#ffa6a6a6" android:textColorHint="#ffc8c8c8" android:id="@id/loginactivity_username" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:minHeight="52.0dip" android:hint="请输入用户名" android:singleLine="true" android:drawableLeft="@drawable/ic_account" android:drawablePadding="3.0dip" style="@style/Widget.AppCompat.EditText" />
+        <View android:background="#ffc8c8c8" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <EditText android:textColor="#ffa6a6a6" android:textColorHint="#ffc8c8c8" android:id="@id/loginactivity_password" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:minHeight="52.0dip" android:hint="请输入密码" android:password="true" android:singleLine="true" android:drawableLeft="@drawable/ic_password" android:drawablePadding="3.0dip" style="@style/Widget.AppCompat.EditText" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <CheckBox android:textSize="18.0sp" android:textColor="#ffa6a6a6" android:id="@id/loginactivity_zddl_cb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:text="自动登录" />
+        <TextView android:textSize="18.0sp" android:id="@id/tv_more_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <Button android:textSize="20.0sp" android:textColor="#ffffffff" android:id="@id/loginactivity_btn" android:background="@drawable/btn_green" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_margin="20.0dip" android:layout_marginTop="3.0dip" android:text="登录" android:layout_below="@id/loginactivity_jzmm_rl" />
+</LinearLayout>

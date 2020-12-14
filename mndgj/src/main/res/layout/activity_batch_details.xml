@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="20.0dip" android:textColor="#ff00a8e1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="20.0dip" android:text="购入牛信息" android:layout_weight="4.5" />
+                <Button android:textSize="20.0dip" android:textColor="#ffffffff" android:id="@id/btn_demo" android:background="@drawable/btn_green" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_margin="20.0dip" android:text="示例数据" android:layout_weight="1.5" />
+                <Button android:textSize="20.0dip" android:textColor="#ffffffff" android:id="@id/btn_file" android:background="@drawable/btn_green" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_margin="20.0dip" android:text="获取数据" android:layout_weight="1.5" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="电子耳标号：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/rfid_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLength="20" android:digits="_0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+                <View android:background="#ffa2a2a2" android:layout_width="1.0dip" android:layout_height="50.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="管理耳标号：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/gleb_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLength="15" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffa2a2a2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="原管理耳标号：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/ygleb_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLength="20" android:layout_weight="12.0" />
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="4.0" />
+                </LinearLayout>
+                <View android:background="#ffa2a2a2" android:layout_width="1.0dip" android:layout_height="wrap_content" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="原电子耳标号：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/yrfid_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLength="50" android:layout_weight="12.0" />
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="4.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffa2a2a2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="产地省份：" android:layout_weight="7.0" />
+                    <EditText android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="内蒙古自治区" android:editable="false" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="4.0" />
+                </LinearLayout>
+                <View android:background="#ffa2a2a2" android:layout_width="1.0dip" android:layout_height="50.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="产地城市：" android:layout_weight="7.0" />
+                    <EditText android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="通辽市" android:editable="false" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="4.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffa2a2a2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="产地区（旗）县：" android:layout_weight="7.0" />
+                    <Spinner android:id="@id/cdqx_sp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+                <View android:background="#ffa2a2a2" android:layout_width="1.0dip" android:layout_height="50.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="产地乡镇：" android:layout_weight="7.0" />
+                    <Spinner android:id="@id/cdxz_sp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffa2a2a2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <View android:layout_width="1.0dip" android:layout_height="50.0dip" />
+                <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="产地：" android:layout_weight="7.0" />
+                <EditText android:id="@id/cd_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLength="50" android:layout_weight="28.0" />
+                <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="8.0" />
+            </LinearLayout>
+            <View android:background="#ffa2a2a2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="原畜主：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/xz_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLength="50" android:layout_weight="12.0" />
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="4.0" />
+                </LinearLayout>
+                <View android:background="#ffa2a2a2" android:layout_width="1.0dip" android:layout_height="50.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="品种 ：" android:layout_weight="7.0" />
+                    <Spinner android:id="@id/pz_sp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffa2a2a2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="购入体重：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/grtz_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLength="7" android:numeric="decimal" android:layout_weight="12.0" />
+                    <TextView android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="Kg" android:layout_weight="3.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="*" android:layout_weight="1.0" />
+                </LinearLayout>
+                <View android:background="#ffa2a2a2" android:layout_width="1.0dip" android:layout_height="50.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="出生日期：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/csrq_et" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="0.0dip" android:layout_height="wrap_content" android:editable="false" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="*" android:layout_weight="4.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffa2a2a2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="毛色：" android:layout_weight="7.0" />
+                    <Spinner android:id="@id/ms_sp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+                <View android:background="#ffa2a2a2" android:layout_width="1.0dip" android:layout_height="50.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="性别：" android:layout_weight="7.0" />
+                    <Spinner android:id="@id/xb_sp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffa2a2a2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <TextView android:textSize="20.0dip" android:textColor="#ff00a8e1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="20.0dip" android:text="购入牛检疫信息" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="是否免疫：" android:layout_weight="7.0" />
+                    <Spinner android:id="@id/sfjy_sp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+                <View android:background="#ffa2a2a2" android:layout_width="1.0dip" android:layout_height="50.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="检疫结果：" android:layout_weight="7.0" />
+                    <Spinner android:id="@id/jyjg_sp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffa2a2a2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="检疫部门：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/jybm_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLength="50" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+                <View android:background="#ffa2a2a2" android:layout_width="1.0dip" android:layout_height="50.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="检疫票号：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/jyph_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLength="20" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffa2a2a2" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="检疫时间：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/jyrq_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:editable="false" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+                <View android:background="#ffa2a2a2" android:layout_width="1.0dip" android:layout_height="50.0dip" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <TextView android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="检疫员：" android:layout_weight="7.0" />
+                    <EditText android:id="@id/jyy_et" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLength="20" android:layout_weight="12.0" />
+                    <TextView android:textColor="#ffff0000" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="  *" android:layout_weight="4.0" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textSize="20.0dip" android:textColor="#ff00a8e1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="20.0dip" android:text="筛选照片" />
+            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip">
+                <ImageView android:layout_gravity="center" android:id="@id/camera0_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gridview_addpic" android:scaleType="centerInside" android:layout_weight="1.0" android:layout_centerVertical="true" />
+                <ImageView android:layout_gravity="center" android:id="@id/camera1_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gridview_addpic" android:scaleType="centerInside" android:layout_weight="1.0" android:layout_centerVertical="true" />
+                <ImageView android:layout_gravity="center" android:id="@id/camera2_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gridview_addpic" android:scaleType="centerInside" android:layout_weight="1.0" android:layout_centerVertical="true" />
+                <TextView android:textColor="#ff00a8e1" android:layout_gravity="center" android:background="@drawable/gridview_addpic" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="88.0dip" android:layout_margin="5.0dip" android:layout_weight="1.0" />
+                <TextView android:textColor="#ff00a8e1" android:layout_gravity="center" android:background="@drawable/gridview_addpic" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="88.0dip" android:layout_margin="5.0dip" android:layout_weight="1.0" />
+                <TextView android:textColor="#ff00a8e1" android:layout_gravity="center" android:background="@drawable/gridview_addpic" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="88.0dip" android:layout_margin="5.0dip" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:textColor="#ffffffff" android:id="@id/btn_save_details" android:background="@drawable/btn_green" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="保存" android:layout_weight="1.0" />
+                <Button android:textColor="#ffffffff" android:id="@id/btn_cancel" android:background="@drawable/btn_green" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="取消" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

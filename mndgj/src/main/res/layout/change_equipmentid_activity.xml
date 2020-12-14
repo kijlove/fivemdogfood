@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/ll_frame_1r1c">
+        <TextView android:text="购入牛设备" style="@style/tv_form_title" />
+        <EditText android:textSize="16.0sp" android:id="@id/grn_did" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:editable="false" android:layout_weight="1.0" style="@style/et_from_factor" />
+        <TextView android:textSize="17.0sp" android:gravity="center" android:id="@id/grn_did_tv" android:layout_width="60.0dip" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <LinearLayout style="@style/ll_frame_1r1c">
+        <TextView android:text="出栏牛设备" style="@style/tv_form_title" />
+        <EditText android:textSize="16.0sp" android:id="@id/cln_did" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:editable="false" android:layout_weight="1.0" style="@style/et_from_factor" />
+        <TextView android:textSize="17.0sp" android:gravity="center" android:id="@id/cln_did_tv" android:layout_width="60.0dip" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <Button android:textColor="@android:color/white" android:id="@id/btn_save" android:background="@drawable/btn_green" android:layout_marginTop="3.0dip" android:text="保存" style="@style/BaseButton" />
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/addtextlinear" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:layout_weight="3.0">
+            <ListView android:id="@id/lv_parent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <ListView android:orientation="vertical" android:id="@id/lv_child" android:paddingLeft="10.0dip" android:paddingTop="2.0dip" android:paddingRight="10.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:choiceMode="multipleChoice" android:layout_weight="7.0" />
+    </LinearLayout>
+    <RelativeLayout android:background="@android:color/black" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textColor="@android:color/white" android:id="@id/choose_img_btok" android:background="@drawable/btn_green" android:layout_width="90.0dip" android:layout_height="40.0dip" android:layout_margin="10.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@android:color/white" android:id="@id/choose_img_tvCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="共38张" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <GridView android:gravity="center" android:layout_gravity="center" android:id="@id/choose_img_gv" android:background="#b2000000" android:layout_width="fill_parent" android:layout_height="fill_parent" android:horizontalSpacing="2.0dip" android:verticalSpacing="2.0dip" android:numColumns="3" />
+</LinearLayout>

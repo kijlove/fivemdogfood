@@ -3,6 +3,7 @@ package com.kijlee.wb.loveuser.ui.love.main.ui.adddate
 
 import android.Manifest
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
@@ -25,10 +27,13 @@ import cn.bmob.v3.listener.FindListener
 import cn.bmob.v3.listener.SaveListener
 import cn.bmob.v3.listener.UploadBatchListener
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.adapter.EditImageListAdapter
-import com.kijlee.wb.loveuser.entity.loveuser.LoveUserBean
+import com.kijlee.wb.loveuser.entity.loveuser.Areas
 import com.kijlee.wb.loveuser.entity.loveuser.ImageViewEditBean
+import com.kijlee.wb.loveuser.entity.loveuser.LoveUserBean
 import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
 import com.kijlee.wb.loveuser.flag.Flag
 import com.kijlee.wb.loveuser.flag.FragmentName
@@ -38,7 +43,10 @@ import com.yancy.gallerypick.config.GalleryConfig
 import com.yancy.gallerypick.config.GalleryPick
 import com.yancy.gallerypick.inter.IHandlerCallBack
 import kotlinx.android.synthetic.main.fg_add_fivem_user.*
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.IOException
+import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -52,12 +60,14 @@ class FgAddLoveUser : Fragment() {
     var userBean = LoveUserBean()
     lateinit var galleryConfig: GalleryConfig
     val PERMISSIONS_REQUEST_READ_CONTACTS = 8
+    var cityArray:MutableList<Areas> =ArrayList()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewLayout = inflater!!.inflate(R.layout.fg_add_fivem_user, container, false)
+        cityArray = getStates(requireContext())!!
         initGallery()
         galleryConfig = GalleryConfig.Builder()
             .imageLoader(PicassoImageLoader())    // ImageLoader 加载框架（必填）
@@ -123,6 +133,11 @@ class FgAddLoveUser : Fragment() {
     var user = LoveUserBean()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var stringlist = ArrayList<String>()
+        for(item in cityArray){
+            stringlist.add(item.name!!)
+        }
+        province.adapter  = ArrayAdapter<String>(requireContext(),R.layout.layout_defaut_text,stringlist)
         //上传用户资料
         addUserBtn.setOnClickListener {
             if (!TextUtils.isEmpty(numCode.text)) {
@@ -195,7 +210,38 @@ class FgAddLoveUser : Fragment() {
             }
         }
     }
-
+    fun getStates(context: Context): MutableList<Areas>? {
+        var inputStream: InputStream? = null
+        var bos: ByteArrayOutputStream? = null
+        try {
+            inputStream = context.getAssets().open("china_city_data.json")
+            bos = ByteArrayOutputStream()
+            val bytes = ByteArray(4 * 1024)
+            var len = 0
+            while (inputStream.read(bytes).also({ len = it }) != -1) {
+                bos.write(bytes, 0, len)
+            }
+            val json = String(bos.toByteArray())
+            val jsonArray: JsonArray = Gson().fromJson(json, JsonArray::class.java)
+            var areas :MutableList<Areas> = ArrayList()
+            for(item in jsonArray){
+                var area =  Gson().fromJson(item, Areas::class.java)
+                areas.add(area)
+                ViseLog.e("json===="+item.toString())
+            }
+            return areas
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            try {
+                if (inputStream != null) inputStream.close()
+                if (bos != null) bos.close()
+            } catch (e: IOException) {
+                ViseLog.e("getStates")
+            }
+        }
+        return null
+    }
     fun signUp() {
 
         if (BmobUser.isLogin()) {
