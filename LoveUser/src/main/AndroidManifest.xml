@@ -21,20 +21,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.kijlee.wb.loveuser.ui.love.main.ui.adddate.MineSwitchActivity"></activity>
+        <activity android:name="com.kijlee.wb.loveuser.ui.love.main.ui.adddate.MineSwitchActivity"
+            android:label="m"
+            ></activity>
         <activity android:name="com.kijlee.wb.loveuser.ui.phptest.PhpTestActivity" />
-        <activity android:name="com.kijlee.wb.loveuser.ui.love.FiveMDogFoodActivity" />
-        <activity android:name="com.kijlee.wb.loveuser.ui.videos.VideosActivity" />
-        <activity android:name="com.kijlee.wb.loveuser.ui.juhe.JuheActivity" />
-        <activity android:name="com.kijlee.wb.loveuser.ui.showapi.tnl.TnlActivity" />
-        <activity android:name="com.kijlee.wb.loveuser.ui.showapi.ShowApiActivity" />
-        <activity android:name="com.kijlee.wb.loveuser.ui.main.MainActivity">
+        <activity android:name="com.kijlee.wb.loveuser.ui.love.FiveMDogFoodActivity"
+            android:label="@string/FiveMDogFoodActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- 数据共享 -->
+        </activity>
+        <activity android:name="com.kijlee.wb.loveuser.ui.videos.VideosActivity"
+            android:label="@string/VideosActivity"/>
+        <activity android:name="com.kijlee.wb.loveuser.ui.juhe.JuheActivity"
+            android:label="@string/JuheActivity"/>
+        <activity android:name="com.kijlee.wb.loveuser.ui.showapi.tnl.TnlActivity"
+            android:label="@string/TnlActivity"/>
+        <activity android:name="com.kijlee.wb.loveuser.ui.showapi.ShowApiActivity"
+            android:label="@string/ShowApiActivity"/>
+        <activity android:name="com.kijlee.wb.loveuser.ui.main.MainActivity"></activity> <!-- 数据共享 -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.kijlee.wb.loveuser.provider"

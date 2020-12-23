@@ -11,7 +11,7 @@ import com.kijlee.wb.loveuser.base.BaseActivity
 import com.mob.MobSDK
 
 /**
- * 5M狗粮项目
+ * 回眸婚恋项目
  */
 class FiveMDogFoodActivity: BaseActivity() {
 
