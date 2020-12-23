@@ -229,6 +229,7 @@ class FgAddLoveUser : Fragment() {
                 areas.add(area)
                 ViseLog.e("json===="+item.toString())
             }
+
             return areas
         } catch (e: Exception) {
             e.printStackTrace()
