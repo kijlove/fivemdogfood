@@ -13,12 +13,14 @@
 
         <LinearLayout
 
-            style="@style/input_hint_linear">
+            style="@style/input_hint_linear"
+            android:background="@drawable/logon_input_bg">
 
             <TextView
                 style="@style/defaut_text"
                 android:text="机构名称"
-                android:textSize="@dimen/small_fonts_size"></TextView>
+                android:background="#f3f3f3"
+                android:textColor="#8a8a8a"></TextView>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/orgName"
@@ -31,12 +33,14 @@
 
         <LinearLayout
 
+            android:background="@drawable/logon_input_bg"
             style="@style/input_hint_linear">
 
             <TextView
                 style="@style/defaut_text"
                 android:text="验证码"
-                android:textSize="@dimen/small_fonts_size"></TextView>
+                android:background="#f3f3f3"
+                android:textColor="#8a8a8a"></TextView>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/checkCode"
@@ -49,12 +53,14 @@
 
         <LinearLayout
 
+            android:background="@drawable/logon_input_bg"
             style="@style/input_hint_linear">
 
             <TextView
                 style="@style/defaut_text"
                 android:text="邀请码"
-                android:textSize="@dimen/small_fonts_size"></TextView>
+                android:background="#f3f3f3"
+                android:textColor="#8a8a8a"></TextView>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inviteCode"
@@ -66,14 +72,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
+            android:background="@drawable/logon_input_bg"
+            style="@style/input_hint_linear">
 
             <TextView
                 style="@style/defaut_text"
+                android:background="#f3f3f3"
+                android:textColor="#8a8a8a"
                 android:text="手机号"></TextView>
 
             <com.google.android.material.textfield.TextInputEditText
@@ -86,14 +91,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/bg_input"
-            android:orientation="horizontal">
+            android:background="@drawable/logon_input_bg"
+            style="@style/input_hint_linear">
 
             <TextView
                 style="@style/defaut_text"
+                android:background="#f3f3f3"
+                android:textColor="#8a8a8a"
                 android:text="密码"></TextView>
 
             <com.google.android.material.textfield.TextInputEditText
@@ -110,6 +114,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:background="@drawable/button"
+            android:textColor="@color/white"
             android:text="申请"></Button>
 
     </LinearLayout>

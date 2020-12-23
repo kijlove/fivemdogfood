@@ -6,22 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
-import cn.bmob.v3.BmobUser
-import cn.bmob.v3.exception.BmobException
-import cn.bmob.v3.listener.LogInListener
-import cn.bmob.v3.listener.SaveListener
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.adapter.VpAdapter
 import com.kijlee.wb.loveuser.base.BaseFragment
-import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
-import com.kijlee.wb.loveuser.flag.Flag
-import com.kijlee.wb.loveuser.flag.FragmentName
-import com.kijlee.wb.loveuser.ui.showapi.tnl.Fg_TnlList
-import com.vise.log.ViseLog
-import kotlinx.android.synthetic.main.fg_register.*
-import java.util.ArrayList
+import kotlinx.android.synthetic.main.layout_toolbar.*
+import java.util.*
 
 /**
  * 人员注册和机构注册
@@ -54,6 +44,8 @@ class FgRegister : BaseFragment() {
         viewLayout!!.findViewById<ViewPager>(R.id.viewPager).setAdapter(vpAdapter)
         //TabLayout加载viewpager
         viewLayout!!.findViewById<TabLayout>(R.id.tabLayout).setupWithViewPager(viewLayout!!.findViewById<ViewPager>(R.id.viewPager))
+
+
         return viewLayout
     }
 

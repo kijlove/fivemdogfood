@@ -13,6 +13,7 @@ import com.kijlee.wb.loveuser.base.BaseFragment
 import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
 import com.vise.log.ViseLog
 import kotlinx.android.synthetic.main.fg_add_staff.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 /**
  * 添加员工

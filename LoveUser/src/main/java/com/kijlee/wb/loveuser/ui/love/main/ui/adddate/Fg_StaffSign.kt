@@ -19,7 +19,6 @@ import com.kijlee.wb.loveuser.entity.loveuser.RoleCode
 import com.vise.log.ViseLog
 
 import kotlinx.android.synthetic.main.fg_register.*
-
 /**
  * 员工注册
  */
