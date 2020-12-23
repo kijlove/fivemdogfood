@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:orientation="vertical">
 
     <LinearLayout
 
-        style="@style/input_hint_linear">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/logon_input_bg"
+        android:orientation="horizontal">
 
         <TextView
-            style="@style/defaut_text"
-            android:text="手机号"
-            android:textSize="@dimen/small_fonts_size"></TextView>
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="手机号"></TextView>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/userMobleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:layout_gravity="center_vertical"
-            android:background="@null"></com.google.android.material.textfield.TextInputEditText>
+            android:background="@null"
+            android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
 
     </LinearLayout>
 
@@ -28,11 +35,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:background="@drawable/bg_input"
+        android:background="@drawable/logon_input_bg"
         android:orientation="horizontal">
 
         <TextView
-            style="@style/defaut_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="密码"></TextView>
 
         <com.google.android.material.textfield.TextInputEditText
@@ -43,11 +52,13 @@
             android:background="@null"
             android:inputType="textPassword"></com.google.android.material.textfield.TextInputEditText>
     </LinearLayout>
+
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="登陆"
-        ></Button>
+        android:background="@drawable/button"
+        android:textColor="@color/white"
+        android:text="登陆"></Button>
 
 </LinearLayout>
