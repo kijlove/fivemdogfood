@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.qmuiteam.qmui.widget.QMUITopBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/topbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"/>

@@ -10,6 +10,8 @@ import com.google.android.material.tabs.TabLayout
 import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.adapter.VpAdapter
 import com.kijlee.wb.loveuser.base.BaseFragment
+import com.qmuiteam.qmui.kotlin.onClick
+import com.qmuiteam.qmui.widget.QMUITopBarLayout
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import java.util.*
 
@@ -45,6 +47,8 @@ class FgRegister : BaseFragment() {
         //TabLayout加载viewpager
         viewLayout!!.findViewById<TabLayout>(R.id.tabLayout).setupWithViewPager(viewLayout!!.findViewById<ViewPager>(R.id.viewPager))
 
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).addLeftBackImageButton().onClick { requireActivity().finish() }
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).setTitle("注册")
 
         return viewLayout
     }

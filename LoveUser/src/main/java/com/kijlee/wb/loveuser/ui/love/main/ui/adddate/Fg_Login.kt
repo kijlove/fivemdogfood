@@ -1,5 +1,6 @@
 package com.kijlee.wb.loveuser.ui.love.main.ui.adddate
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.base.BaseFragment
 import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
+import com.kijlee.wb.loveuser.flag.Flag
+import com.kijlee.wb.loveuser.flag.FragmentName
+import com.qmuiteam.qmui.kotlin.onClick
+import com.qmuiteam.qmui.widget.QMUITopBarLayout
 import com.vise.log.ViseLog
 import kotlinx.android.synthetic.main.fg_add_staff.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -27,11 +32,21 @@ class Fg_Login : BaseFragment() {
     ): View? {
         viewLayout = inflater!!.inflate(R.layout.fg_add_staff, container, false)
 
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).addLeftBackImageButton().onClick { requireActivity().finish() }
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).setTitle("登陆")
         return viewLayout
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        registerText.setOnClickListener {
+
+            //跳转到下一级
+            var intent = Intent(context, MineSwitchActivity::class.java)
+            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgRegister)
+            startActivity(intent)
+
+        }
         loginBtn.setOnClickListener {
 
             BmobUser.loginByAccount(userMobleText.text.toString(),userPassword.text.toString(),object :
@@ -51,6 +66,8 @@ class Fg_Login : BaseFragment() {
                 }
             })
         }
+
+
     }
 
 }

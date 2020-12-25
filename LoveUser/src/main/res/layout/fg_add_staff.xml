@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.qmuiteam.qmui.widget.QMUITopBarLayout
-        android:id="@+id/qmuitop"
-        android:fitsSystemWindows="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
+
+    <include
+        layout="@layout/layout_toolbar"
+        ></include>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        android:layout_marginTop="?attr/qmui_topbar_height"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="@dimen/activity_vertical_margin">
@@ -86,10 +87,16 @@
                 android:text="没有账号吗?"></TextView>
 
             <TextView
+                android:id="@+id/registerText"
                 style="@style/defaut_text"
                 android:text="点这儿注册"
                 android:textColor="#4c7bf7"></TextView>
 
 
         </LinearLayout>
-    </LinearLayout></com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
+    </LinearLayout>
+
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
+
+
+
