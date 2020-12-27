@@ -18,6 +18,6 @@ class StaffsAdapter  constructor(resLayout: Int, data: MutableList<ManagerUser>)
 
 
     override fun convert(holder: BaseViewHolder, item: ManagerUser) {
-        holder!!.setText(R.id.text1,item.realName)
+        holder!!.setText(R.id.text1,item.realName+item.roleCode)
     }
 }

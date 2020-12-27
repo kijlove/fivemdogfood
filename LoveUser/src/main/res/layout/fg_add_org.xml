@@ -46,6 +46,7 @@
                 android:id="@+id/checkCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="用于查看机构内会员数据"
                 android:layout_gravity="center_vertical"
                 android:background="@null"></com.google.android.material.textfield.TextInputEditText>
 
@@ -67,6 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:hint="用于加盟机构"
                 android:background="@null"></com.google.android.material.textfield.TextInputEditText>
 
         </LinearLayout>

@@ -71,7 +71,7 @@ class FgMine : BaseFragment() {
         //设置邀请码
         setInviteCode.setOnClickListener {
             if (BmobUser.isLogin()) {
-
+                showProgress()
                 val builder = QMUIDialog.EditTextDialogBuilder(requireContext())
                 builder.setTitle("设置邀请码可以添加加盟机构")
                         .addAction(
@@ -143,43 +143,82 @@ class FgMine : BaseFragment() {
 
     }
 
+    //设置邀请码  首先得查询是否有相同机构的邀请码
     fun setInviteCode(inviteCode: String) {
-
         //最后组装完整的and条件
         var selectOrg = BmobQuery<OrgBean>()
         selectOrg.addWhereEqualTo(
                 "objectId",
                 BmobUser.getCurrentUser(ManagerUser::class.java).orgId//机构id
-        )
+        )//查询出登陆这所在的机构名称  然后设置机构的邀请id
         selectOrg.findObjects(object : FindListener<OrgBean>() {
-            override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
-                hideProgress()
-                ViseLog.e("查询结果=====" + p0!!.size)
+            override fun done(data: MutableList<OrgBean>?, p1: BmobException?) {
+                ViseLog.e("查询结果=====" + data!!.size)
                 if (p1 == null) {
-                    if (p0 != null && p0.size == 1) {//查询到邀请码的机构得到机构id
-                        p0[0].inviteCode = inviteCode//父级机构id
-                        p0[0].update(object : UpdateListener() {
-                            override fun done(p0: BmobException?) {
-                                if (p0 == null) {
-                                    Snackbar.make(
-                                            addOrgBtn,
-                                            "更新完成",
-                                            Snackbar.LENGTH_LONG
-                                    ).show()
-                                    activity!!.finish()
+                    if (data != null && data.size == 1) {//查询到登陆人的机构得到机构类
+                        //机构邀请码等于空 说明没设置
+                        if(data[0].inviteCode == null){
+                            data[0].inviteCode = inviteCode//邀请码
+                        }else if(data[0].inviteCode.equals(inviteCode)){//如果邀请码 等于 设置的邀请码
+                            Snackbar.make(
+                                    logonOutText,
+                                    "与原邀请码相同",
+                                    Snackbar.LENGTH_LONG
+                            ).show()
+                        }else{
+                            data[0].inviteCode = inviteCode//邀请码
+                        }
+                        //去查询邀请码是否和其他机构相同
+                        var selectInviteCode = BmobQuery<OrgBean>()
+                        selectInviteCode.addWhereEqualTo(
+                                "inviteCode",
+                                inviteCode//邀请id
+                        )
+                        selectInviteCode.findObjects(object : FindListener<OrgBean>() {
+                            override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
+                                if (p1 == null) {
+                                    ViseLog.e("查询结果=====" + p0!!.size)
+                                    if (p0!!.size == 0) {//说明没有邀请码与设置的相同 就保存并上传新数据
+
+                                        //保存邀请码
+                                        data[0].update(object : UpdateListener() {
+                                            override fun done(result: BmobException?) {
+                                                if (result == null) {
+                                                    hideProgress()
+                                                    Snackbar.make(
+                                                            logonOutText,
+                                                            "更新完成",
+                                                            Snackbar.LENGTH_LONG
+                                                    ).show()
+
+                                                }
+                                            }
+                                        })
+                                    } else {//否则就给出提示说 邀请码相同或者错误
+
+                                        hideProgress()
+                                        showToast("邀请码错误或者已存在")
+                                    }
+                                } else {
+                                    ViseLog.e("查询结果=====" + p1.toString())
                                 }
                             }
                         })
 
                     } else {
+
+                        hideProgress()
                         showToast("邀请码错误")
                     }
                 } else {
-                    ViseLog.e("查询失败")
+                    ViseLog.e("查询失败"+BmobUser.getCurrentUser(ManagerUser::class.java).orgId+"错误信息=="+p1.toString())
                 }
             }
         })
+
     }
+
+
     fun setManagerIdText(managerId: String) {
 
         //最后组装完整的and条件
@@ -199,11 +238,11 @@ class FgMine : BaseFragment() {
                             override fun done(p0: BmobException?) {
                                 if (p0 == null) {
                                     Snackbar.make(
-                                            addOrgBtn,
+                                            logonOutText,
                                             "更新完成",
                                             Snackbar.LENGTH_LONG
                                     ).show()
-                                    activity!!.finish()
+
                                 }
                             }
                         })
@@ -227,15 +266,15 @@ class FgMine : BaseFragment() {
             userNameText.visibility = View.VISIBLE
             changePasswordText.visibility = View.VISIBLE
 
-            when(BmobUser.getCurrentUser(ManagerUser::class.java).roleCode){
-                RoleCode.BOSS->{//老板
+            when (BmobUser.getCurrentUser(ManagerUser::class.java).roleCode) {
+                RoleCode.BOSS -> {//老板
                     getAllStaffText.visibility = View.VISIBLE
                     setInviteCode.visibility = View.VISIBLE
                     setManagerIdText.visibility = View.VISIBLE
                     getAllOrgText.visibility = View.VISIBLE
                     addDateLoveUser.visibility = View.GONE
                 }
-                RoleCode.EDITER->{//录入者
+                RoleCode.EDITER -> {//录入者
                     setInviteCode.visibility = View.GONE
                     getAllStaffText.visibility = View.GONE
                     getAllOrgText.visibility = View.GONE
@@ -250,42 +289,43 @@ class FgMine : BaseFragment() {
     }
 
     fun findMyOrg() {
-        if(BmobUser.isLogin()){
+        if (BmobUser.isLogin()) {
             noLogin.visibility = View.GONE
             val user: ManagerUser? = BmobUser.getCurrentUser(ManagerUser::class.java)
-            ViseLog.e("user.username=="+user!!.username)
+            ViseLog.e("user.username==" + user!!.username)
             userNameText.text = user!!.username
 
             var query = BmobQuery<OrgBean>()
-            query.addWhereEqualTo("objectId",user.orgId!!.toString())
+            query.addWhereEqualTo("objectId", user.orgId!!.toString())
             query.findObjects(object : FindListener<OrgBean>() {
                 override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
-                    ViseLog.e("查询结果====="+p0!![0].objectId)
+                    ViseLog.e("查询结果=====" + p0!![0].objectId)
                     userNameText.text = user.username.toString()
                     if (p1 == null) {
-                        userNameText.text = user.username.toString()+
-                                if(p0!![0].isOpen!!){
+                        userNameText.text = user.username.toString() +
+                                if (p0!![0].isOpen!!) {
                                     "机构已启用"
-                                }else{
+                                } else {
                                     "机构未启用"
                                 }
                     } else {
-                        ViseLog.e("查询失败"+p1.errorCode)
-                        ViseLog.e("查询失败"+user.orgId!!.toString())
+                        ViseLog.e("查询失败" + p1.errorCode)
+                        ViseLog.e("查询失败" + user.orgId!!.toString())
                     }
                 }
             })
-        }else{
+        } else {
             noLogin.visibility = View.VISIBLE
 
-            noLogin.setButton("点击登录",{
+            noLogin.setButton("点击登录", {
 
                 //跳转到下一级
                 var intent = Intent(context, MineSwitchActivity::class.java)
                 intent.putExtra(Flag.FragmentSwitch, FragmentName.FgLogin)
                 startActivity(intent)
 
-            })}
+            })
+        }
 
     }
 }

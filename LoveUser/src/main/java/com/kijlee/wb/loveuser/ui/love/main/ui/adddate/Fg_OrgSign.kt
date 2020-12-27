@@ -32,7 +32,6 @@ class Fg_OrgSign : BaseFragment() {
             savedInstanceState: Bundle?
     ): View? {
         viewLayout = inflater!!.inflate(R.layout.fg_add_org, container, false)
-
         return viewLayout
     }
 
