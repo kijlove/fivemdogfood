@@ -1,102 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context=".ui.love.main.ui.mine.FgMine">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+
+    <include layout="@layout/layout_toolbar"></include>
+
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/qmui_topbar_height"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        tools:context=".ui.love.main.ui.mine.FgMine">
 
         <LinearLayout
-            android:id="@+id/logonOutLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/black"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/userNameText"
-                style="@style/defaut_text"
+            <LinearLayout
+                android:id="@+id/logonOutLinear"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="1px"
-                android:background="@color/white"
-                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-                android:gravity="center_vertical"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:text=""></TextView>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/setInviteCode"
-                style="@style/mine_item_text_style"
-                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-                android:text="设置邀请码"
-                android:visibility="gone"></TextView>
+                <TextView
+                    android:id="@+id/userNameText"
+                    style="@style/defaut_text"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/white"
+                    android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:text=""
+                    android:visibility="gone"></TextView>
 
-            <TextView
-                android:id="@+id/setManagerIdText"
-                style="@style/mine_item_text_style"
-                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-                android:text="设置数据查看验证码"
-                android:visibility="gone"></TextView>
+                <TextView
+                    android:id="@+id/setInviteCode"
+                    style="@style/mine_item_text_style"
+                    android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:text="设置邀请码"
+                    android:visibility="gone"></TextView>
 
-
-            <TextView
-                android:id="@+id/addDateLoveUser"
-                style="@style/mine_item_text_style"
-                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-                android:text="添加用户数据"
-                android:visibility="gone"></TextView>
-
-            <TextView
-                android:id="@+id/getAllOrgText"
-                style="@style/mine_item_text_style"
-                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-                android:text="全部机构列表"
-                android:visibility="gone"></TextView>
-
-            <TextView
-                android:id="@+id/getAllStaffText"
-                style="@style/mine_item_text_style"
-                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-                android:text="全部员工"
-                android:visibility="gone"></TextView>
-
-            <TextView
-                android:id="@+id/changePasswordText"
-                style="@style/mine_item_text_style"
-                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-                android:visibility="gone"
-                android:text="修改密码"></TextView>
+                <TextView
+                    android:id="@+id/setManagerIdText"
+                    style="@style/mine_item_text_style"
+                    android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:text="设置数据查看验证码"
+                    android:visibility="gone"></TextView>
 
 
-            <TextView
-                android:id="@+id/logonOutText"
-                style="@style/mine_item_text_style"
-                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-                android:visibility="gone"
-                android:text="退出"></TextView>
+                <TextView
+                    android:id="@+id/addDateLoveUser"
+                    style="@style/mine_item_text_style"
+                    android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:text="添加用户数据"
+                    android:visibility="gone"></TextView>
+
+                <TextView
+                    android:id="@+id/getAllOrgText"
+                    style="@style/mine_item_text_style"
+                    android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:text="全部机构列表"
+                    android:visibility="gone"></TextView>
+
+                <TextView
+                    android:id="@+id/getAllStaffText"
+                    style="@style/mine_item_text_style"
+                    android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:text="全部员工"
+                    android:visibility="gone"></TextView>
+
+                <TextView
+                    android:id="@+id/changePasswordText"
+                    style="@style/mine_item_text_style"
+                    android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:text="修改密码"
+                    android:visibility="gone"></TextView>
+
+
+                <TextView
+                    android:id="@+id/logonOutText"
+                    style="@style/mine_item_text_style"
+                    android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:text="退出"
+                    android:visibility="gone"></TextView>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/logonInText"
-            style="@style/mine_item_text_style"
-            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-            android:text="登陆"></TextView>
+    </androidx.core.widget.NestedScrollView>
 
-        <TextView
-            android:id="@+id/registerText"
-            style="@style/mine_item_text_style"
-            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-            android:text="注册"></TextView>
-    </LinearLayout>
+    <com.qmuiteam.qmui.widget.QMUIEmptyView
+        android:id="@+id/noLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/qmui_topbar_height"
+        android:background="@color/qmui_config_color_white"
+        android:fitsSystemWindows="true"
+        app:qmui_title_text="尚未登录"
+        app:qmui_detail_text="无法显示我的具体信息"></com.qmuiteam.qmui.widget.QMUIEmptyView>
 
-</androidx.core.widget.NestedScrollView>
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>

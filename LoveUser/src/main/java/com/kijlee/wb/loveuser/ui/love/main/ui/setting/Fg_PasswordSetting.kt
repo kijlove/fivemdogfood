@@ -16,6 +16,8 @@ import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.base.BaseFragment
 import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
 import com.kijlee.wb.loveuser.entity.loveuser.OrgBean
+import com.qmuiteam.qmui.kotlin.onClick
+import com.qmuiteam.qmui.widget.QMUITopBarLayout
 import com.vise.log.ViseLog
 import kotlinx.android.synthetic.main.fg_password_setting.*
 
@@ -31,6 +33,8 @@ class Fg_PasswordSetting : BaseFragment() {
     ): View? {
         viewLayout = inflater!!.inflate(R.layout.fg_password_setting, container, false)
 
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).addLeftBackImageButton().onClick { requireActivity().finish() }
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).setTitle("修改密码")
         return viewLayout
     }
 

@@ -8,18 +8,13 @@ import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.BmobUser
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
-import cn.bmob.v3.listener.UpdateListener
-import com.google.android.material.snackbar.Snackbar
 import com.kijlee.wb.loveuser.R
 import com.kijlee.wb.loveuser.base.BaseFragment
 import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
-import com.kijlee.wb.loveuser.entity.loveuser.OrgBean
-import com.kijlee.wb.loveuser.entity.loveuser.StaffBean
-import com.qmuiteam.qmui.widget.dialog.QMUIDialog
-import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
+import com.qmuiteam.qmui.kotlin.onClick
+import com.qmuiteam.qmui.widget.QMUITopBarLayout
 import com.vise.log.ViseLog
-import kotlinx.android.synthetic.main.fg_add_fivem_user.*
-import kotlinx.android.synthetic.main.layout_recyclerview.*
+import kotlinx.android.synthetic.main.fg_toolbar_recyclerview.*
 
 /**
  * 全部员工列表
@@ -35,7 +30,9 @@ class Fg_AllStaff:BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewLayout = inflater!!.inflate(R.layout.layout_recyclerview, container, false)
+        viewLayout = inflater!!.inflate(R.layout.fg_toolbar_recyclerview, container, false)
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).addLeftBackImageButton().onClick { requireActivity().finish() }
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).setTitle("全部员工")
         adapter = StaffsAdapter(R.layout.layout_defaut_text, stringArray!!)
         return viewLayout
     }

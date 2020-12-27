@@ -21,6 +21,7 @@ import com.kijlee.wb.loveuser.entity.loveuser.RoleCode
 import com.kijlee.wb.loveuser.flag.Flag
 import com.kijlee.wb.loveuser.flag.FragmentName
 import com.kijlee.wb.loveuser.ui.love.main.ui.adddate.MineSwitchActivity
+import com.qmuiteam.qmui.widget.QMUITopBarLayout
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
 import com.vise.log.ViseLog
@@ -44,6 +45,7 @@ class FgMine : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).setTitle("我的")
         findMyOrg()
         //获取全部人员列表
         getAllStaffText.setOnClickListener {
@@ -121,16 +123,8 @@ class FgMine : BaseFragment() {
             BmobUser.logOut()
             if (!BmobUser.isLogin()) {
                 Snackbar.make(addDateLoveUser!!, "退出成功", Snackbar.LENGTH_LONG).show()
-                registerText.visibility = View.VISIBLE
-                logonInText.visibility = View.VISIBLE
                 logonOutLinear.visibility = View.GONE
             }
-        }
-        registerText.setOnClickListener {
-            //跳转到下一级
-            var intent = Intent(context, MineSwitchActivity::class.java)
-            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgRegister)
-            startActivity(intent)
         }
 
         //跳转全部
@@ -138,12 +132,6 @@ class FgMine : BaseFragment() {
             //跳转到下一级
             var intent = Intent(context, MineSwitchActivity::class.java)
             intent.putExtra(Flag.FragmentSwitch, FragmentName.Fg_AllOrg)
-            startActivity(intent)
-        }
-        logonInText.setOnClickListener {
-            //跳转到下一级
-            var intent = Intent(context, MineSwitchActivity::class.java)
-            intent.putExtra(Flag.FragmentSwitch, FragmentName.FgLogin)
             startActivity(intent)
         }
         changePasswordText.setOnClickListener {
@@ -235,8 +223,6 @@ class FgMine : BaseFragment() {
 
         if (BmobUser.isLogin()) {
             logonOutLinear.visibility = View.VISIBLE
-            registerText.visibility = View.GONE
-            logonInText.visibility = View.GONE
             logonOutText.visibility = View.VISIBLE
             userNameText.visibility = View.VISIBLE
             changePasswordText.visibility = View.VISIBLE
@@ -260,13 +246,12 @@ class FgMine : BaseFragment() {
             }
         } else {
             logonOutLinear.visibility = View.GONE
-            registerText.visibility = View.VISIBLE
-            logonInText.visibility = View.VISIBLE
         }
     }
 
     fun findMyOrg() {
         if(BmobUser.isLogin()){
+            noLogin.visibility = View.GONE
             val user: ManagerUser? = BmobUser.getCurrentUser(ManagerUser::class.java)
             ViseLog.e("user.username=="+user!!.username)
             userNameText.text = user!!.username
@@ -290,7 +275,17 @@ class FgMine : BaseFragment() {
                     }
                 }
             })
-        }
+        }else{
+            noLogin.visibility = View.VISIBLE
+
+            noLogin.setButton("点击登录",{
+
+                //跳转到下一级
+                var intent = Intent(context, MineSwitchActivity::class.java)
+                intent.putExtra(Flag.FragmentSwitch, FragmentName.FgLogin)
+                startActivity(intent)
+
+            })}
 
     }
 }

@@ -25,7 +25,7 @@
             android:label="m"
             ></activity>
         <activity android:name="com.kijlee.wb.loveuser.ui.phptest.PhpTestActivity" />
-        <activity android:name="com.kijlee.wb.loveuser.ui.love.FiveMDogFoodActivity"
+        <activity android:name="com.kijlee.wb.loveuser.ui.love.LoveUserActivity"
             android:label="@string/FiveMDogFoodActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

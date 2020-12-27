@@ -13,7 +13,7 @@ import com.mob.MobSDK
 /**
  * 回眸婚恋项目
  */
-class FiveMDogFoodActivity: BaseActivity() {
+class LoveUserActivity: BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
