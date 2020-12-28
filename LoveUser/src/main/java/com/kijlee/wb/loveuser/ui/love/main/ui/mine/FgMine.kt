@@ -219,7 +219,8 @@ class FgMine : BaseFragment() {
     }
 
 
-    fun setManagerIdText(managerId: String) {
+    //设置验证码
+    fun setManagerIdText(checkCode: String) {
 
         //最后组装完整的and条件
         var selectOrg = BmobQuery<OrgBean>()
@@ -228,30 +229,69 @@ class FgMine : BaseFragment() {
                 BmobUser.getCurrentUser(ManagerUser::class.java).orgId//机构id
         )
         selectOrg.findObjects(object : FindListener<OrgBean>() {
-            override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
-                hideProgress()
-                ViseLog.e("查询结果=====" + p0!!.size)
-                if (p1 == null) {
-                    if (p0 != null && p0.size == 1) {//查询到邀请码的机构得到机构id
-                        p0[0].checkCode = managerId//父级机构id
-                        p0[0].update(object : UpdateListener() {
-                            override fun done(p0: BmobException?) {
-                                if (p0 == null) {
-                                    Snackbar.make(
-                                            logonOutText,
-                                            "更新完成",
-                                            Snackbar.LENGTH_LONG
-                                    ).show()
+            override fun done(data: MutableList<OrgBean>?, p1: BmobException?) {
 
+                ViseLog.e("查询结果=====" + data!!.size)
+                if (p1 == null) {
+                    if (data != null && data.size == 1) {//查询到登陆人的机构得到机构类
+
+                        if(data[0].checkCode == null){
+                            data[0].checkCode = checkCode//邀请码
+                        }else if(data[0].checkCode.equals(checkCode)){//如果邀请码 等于 设置的邀请码
+                            Snackbar.make(
+                                    logonOutText,
+                                    "与原验证码相同",
+                                    Snackbar.LENGTH_LONG
+                            ).show()
+                        }else{
+                            data[0].checkCode = checkCode//邀请码
+                        }
+
+
+                        //去查询邀请码是否和其他机构相同
+                        var selectInviteCode = BmobQuery<OrgBean>()
+                        selectInviteCode.addWhereEqualTo(
+                                "checkCode",
+                                checkCode//验证码
+                        )
+                        selectInviteCode.findObjects(object : FindListener<OrgBean>() {
+                            override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
+                                if (p1 == null) {
+                                    ViseLog.e("查询结果=====" + p0!!.size)
+                                    if (p0!!.size == 0) {//说明没有邀请码与设置的相同 就保存并上传新数据
+
+                                        //保存邀请码
+                                        data[0].update(object : UpdateListener() {
+                                            override fun done(result: BmobException?) {
+                                                if (result == null) {
+                                                    hideProgress()
+                                                    Snackbar.make(
+                                                            logonOutText,
+                                                            "更新完成",
+                                                            Snackbar.LENGTH_LONG
+                                                    ).show()
+
+                                                }
+                                            }
+                                        })
+                                    } else {//否则就给出提示说 邀请码相同或者错误
+
+                                        hideProgress()
+                                        showToast("验证码错误或者已存在")
+                                    }
+                                } else {
+                                    ViseLog.e("查询结果=====" + p1.toString())
                                 }
                             }
                         })
 
                     } else {
-                        showToast("邀请码错误")
+
+                        hideProgress()
+                        showToast("验证码错误")
                     }
                 } else {
-                    ViseLog.e("查询失败")
+                    ViseLog.e("查询失败"+BmobUser.getCurrentUser(ManagerUser::class.java).orgId+"错误信息=="+p1.toString())
                 }
             }
         })

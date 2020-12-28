@@ -52,7 +52,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         if (managerId == null) {
             val builder = QMUIDialog.EditTextDialogBuilder(requireContext())
-            builder.setTitle("输入管理员账号")
+            builder.setTitle("输入验证码")
                 .addAction(
                     0,
                     "取消",
@@ -64,7 +64,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                         dialog.dismiss()
                         getManagerId(text.toString())
                     } else {
-                        Toast.makeText(activity, "输入管理员账号", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, "输入验证码", Toast.LENGTH_SHORT).show()
                     }
                 }
                 .create().show()
