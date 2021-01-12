@@ -11,9 +11,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -38,6 +36,8 @@ import com.kijlee.wb.loveuser.entity.loveuser.ManagerUser
 import com.kijlee.wb.loveuser.flag.Flag
 import com.kijlee.wb.loveuser.flag.FragmentName
 import com.kijlee.wb.loveuser.utils.PicassoImageLoader
+import com.qmuiteam.qmui.kotlin.onClick
+import com.qmuiteam.qmui.widget.QMUITopBarLayout
 import com.vise.log.ViseLog
 import com.yancy.gallerypick.config.GalleryConfig
 import com.yancy.gallerypick.config.GalleryPick
@@ -52,7 +52,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 /**
- *
+ * 新增婚恋客户数据
  */
 class FgAddLoveUser : Fragment() {
     var viewLayout: View? = null
@@ -60,63 +60,63 @@ class FgAddLoveUser : Fragment() {
     var userBean = LoveUserBean()
     lateinit var galleryConfig: GalleryConfig
     val PERMISSIONS_REQUEST_READ_CONTACTS = 8
-    var cityArray:MutableList<Areas> =ArrayList()
+    var cityArray: MutableList<Areas> = ArrayList()
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         viewLayout = inflater!!.inflate(R.layout.fg_add_fivem_user, container, false)
-        cityArray = getStates(requireContext())!!
+        cityArray = getProvince(requireContext())!!
         initGallery()
         galleryConfig = GalleryConfig.Builder()
-            .imageLoader(PicassoImageLoader())    // ImageLoader 加载框架（必填）
-            .iHandlerCallBack(iHandlerCallBack)     // 监听接口（必填）
-            .provider("com.sphd.kij.systemmanger.provider")   // provider(必填)
+                .imageLoader(PicassoImageLoader())    // ImageLoader 加载框架（必填）
+                .iHandlerCallBack(iHandlerCallBack)     // 监听接口（必填）
+                .provider("com.sphd.kij.systemmanger.provider")   // provider(必填)
 //                .pathList(path)                         // 记录已选的图片
-            .multiSelect(true, 3)// 配置是否多选的同时 配置多选数量   默认：false ， 9
-            .crop(false)// 快捷开启裁剪功能，仅当单选 或直接开启相机时有效
-            .isShowCamera(true)// 是否现实相机按钮  默认：false
-            .filePath(requireContext().getExternalFilesDir(null)!!.absolutePath + "/Gallery/Pictures")          // 图片存放路径
-            .build()
+                .multiSelect(true, 3)// 配置是否多选的同时 配置多选数量   默认：false ， 9
+                .crop(false)// 快捷开启裁剪功能，仅当单选 或直接开启相机时有效
+                .isShowCamera(true)// 是否现实相机按钮  默认：false
+                .filePath(requireContext().getExternalFilesDir(null)!!.absolutePath + "/Gallery/Pictures")          // 图片存放路径
+                .build()
         carImageViewAdapter = EditImageListAdapter(R.layout.re_item_image_edit, imageViewEditList)
 
         viewLayout!!.findViewById<TextView>(R.id.birthdayText).setOnClickListener { view ->
             ViseLog.e("点击了出生日期")
             DatePickerDialog(
-                requireContext(), DatePickerDialog.OnDateSetListener { view, year, month, day ->
-                    //更新EditText控件日期 小于10加0
-                    viewLayout!!.findViewById<TextView>(R.id.birthdayText).setText(
+                    requireContext(), DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                //更新EditText控件日期 小于10加0
+                viewLayout!!.findViewById<TextView>(R.id.birthdayText).setText(
                         StringBuilder().append(year).append("-")
-                            .append(if (month + 1 < 10) "0" + (month + 1) else month + 1)
-                            .append("-")
-                            .append(if (day < 10) "0" + day else day)
-                    )
-                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
+                                .append(if (month + 1 < 10) "0" + (month + 1) else month + 1)
+                                .append("-")
+                                .append(if (day < 10) "0" + day else day)
+                )
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
         //添加图片
         viewLayout!!.findViewById<ImageView>(R.id.addPhoto).setOnClickListener { view ->
             if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.CAMERA
-                ) != PackageManager.PERMISSION_GRANTED
+                            requireContext(),
+                            Manifest.permission.CAMERA
+                    ) != PackageManager.PERMISSION_GRANTED
             ) {
 //                Log.e(TAG, "需要授权 ");
                 if (ActivityCompat.shouldShowRequestPermissionRationale(
-                        requireActivity(),
-                        Manifest.permission.CAMERA
-                    )
+                                requireActivity(),
+                                Manifest.permission.CAMERA
+                        )
                 ) {
 //                    Log.e(TAG, "拒绝过了");
 //                    toast("请在 设置-应用管理 中开启此应用的储存授权。");
                 } else {
 //                    Log.e(TAG, "进行授权");
                     ActivityCompat.requestPermissions(
-                        requireActivity(),
-                        arrayOf(Manifest.permission.CAMERA),
-                        PERMISSIONS_REQUEST_READ_CONTACTS
+                            requireActivity(),
+                            arrayOf(Manifest.permission.CAMERA),
+                            PERMISSIONS_REQUEST_READ_CONTACTS
                     )
                 }
             } else {
@@ -125,27 +125,76 @@ class FgAddLoveUser : Fragment() {
             }
         }
         viewLayout!!.findViewById<RecyclerView>(R.id.impage_recyclerview).adapter =
-            carImageViewAdapter
+                carImageViewAdapter
+
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).addLeftBackImageButton().onClick { requireActivity().finish() }
+        viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).setTitle("注册")
         return viewLayout
     }
+
     var calendar: Calendar = Calendar.getInstance()
 
     var user = LoveUserBean()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var stringlist = ArrayList<String>()
-        for(item in cityArray){
+        for (item in cityArray) {
             stringlist.add(item.name!!)
         }
-        province.adapter  = ArrayAdapter<String>(requireContext(),R.layout.layout_defaut_text,stringlist)
+        province.adapter = ArrayAdapter<String>(requireContext(), R.layout.layout_defaut_text, stringlist)
+
+        province.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                var areas = ArrayList<String>()
+                ViseLog.e("选中城市==" + cityArray[p2].name)
+//                when (cityArray[p2].name) {
+//                    "北京市", "上海市", "天津市", "重庆市" -> {
+//                        for (item in cityArray[p2].cityList!![0].cityList!!) {
+//                            ViseLog.e("子集和===" + item.name)
+//                            areas.add(item.name!!)
+//                        }
+//                    }
+//                    else -> {
+//                    }
+//                }
+                for (item in cityArray[p2].cityList!!) {
+                    ViseLog.e("子集和===" + item.name)
+                    areas.add(item.name!!)
+                }
+
+                city.adapter = ArrayAdapter<String>(requireContext(), R.layout.layout_defaut_text, areas)
+            }
+        })
+        city.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                var areas = ArrayList<String>()
+
+
+                for (item in cityArray[province.selectedItemPosition].cityList!![p2].cityList!!) {
+                    ViseLog.e("子集和===" + item.name)
+                    areas.add(item.name!!)
+                }
+
+                county.adapter = ArrayAdapter<String>(requireContext(), R.layout.layout_defaut_text, areas)
+            }
+        })
+
         //上传用户资料
         addUserBtn.setOnClickListener {
             if (!TextUtils.isEmpty(numCode.text)) {
 
                 var bmobUser = BmobQuery<LoveUserBean>()
                 bmobUser.addWhereEqualTo(
-                    "numCode",
-                    numCode.text.toString()
+                        "numCode",
+                        numCode.text.toString()
                 )
                 bmobUser.findObjects(object : FindListener<LoveUserBean>() {
                     override fun done(p0: MutableList<LoveUserBean>?, p1: BmobException?) {
@@ -155,8 +204,8 @@ class FgAddLoveUser : Fragment() {
                                 signUp()
                             } else {
                                 Snackbar.make(
-                                    addUserBtn, "编号相同",
-                                    Snackbar.LENGTH_LONG
+                                        addUserBtn, "编号相同",
+                                        Snackbar.LENGTH_LONG
                                 ).show()
                             }
                         } else {
@@ -164,11 +213,11 @@ class FgAddLoveUser : Fragment() {
                         }
                     }
                 })
-            }else{
+            } else {
 
                 Snackbar.make(
-                    addUserBtn, "编号不能为空",
-                    Snackbar.LENGTH_LONG
+                        addUserBtn, "编号不能为空",
+                        Snackbar.LENGTH_LONG
                 ).show()
             }
         }
@@ -210,7 +259,9 @@ class FgAddLoveUser : Fragment() {
             }
         }
     }
-    fun getStates(context: Context): MutableList<Areas>? {
+
+    //获取省份
+    fun getProvince(context: Context): MutableList<Areas>? {
         var inputStream: InputStream? = null
         var bos: ByteArrayOutputStream? = null
         try {
@@ -223,11 +274,11 @@ class FgAddLoveUser : Fragment() {
             }
             val json = String(bos.toByteArray())
             val jsonArray: JsonArray = Gson().fromJson(json, JsonArray::class.java)
-            var areas :MutableList<Areas> = ArrayList()
-            for(item in jsonArray){
-                var area =  Gson().fromJson(item, Areas::class.java)
+            var areas: MutableList<Areas> = ArrayList()
+            for (item in jsonArray) {
+                var area = Gson().fromJson(item, Areas::class.java)
                 areas.add(area)
-                ViseLog.e("json===="+item.toString())
+                ViseLog.e("json====" + item.toString())
             }
 
             return areas
@@ -243,6 +294,7 @@ class FgAddLoveUser : Fragment() {
         }
         return null
     }
+
     fun signUp() {
 
         if (BmobUser.isLogin()) {
@@ -306,9 +358,9 @@ class FgAddLoveUser : Fragment() {
                             userBean.save(object : SaveListener<String>() {
                                 override fun done(p0: String?, p1: BmobException?) {
                                     Snackbar.make(
-                                        addUserBtn,
-                                        "上传完成 " + BmobInstallationManager.getInstallationId(),
-                                        Snackbar.LENGTH_LONG
+                                            addUserBtn,
+                                            "上传完成 " + BmobInstallationManager.getInstallationId(),
+                                            Snackbar.LENGTH_LONG
                                     ).show()
 
                                 }
@@ -329,9 +381,9 @@ class FgAddLoveUser : Fragment() {
                 userBean.save(object : SaveListener<String>() {
                     override fun done(p0: String?, p1: BmobException?) {
                         Snackbar.make(
-                            addUserBtn,
-                            "上传完成 " + BmobInstallationManager.getInstallationId(),
-                            Snackbar.LENGTH_LONG
+                                addUserBtn,
+                                "上传完成 " + BmobInstallationManager.getInstallationId(),
+                                Snackbar.LENGTH_LONG
                         ).show()
 
                     }
@@ -344,6 +396,5 @@ class FgAddLoveUser : Fragment() {
             startActivity(intent)
         }
     }
-
 
 }

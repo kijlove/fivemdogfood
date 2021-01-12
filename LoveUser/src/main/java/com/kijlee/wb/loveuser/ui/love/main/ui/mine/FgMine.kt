@@ -25,7 +25,6 @@ import com.qmuiteam.qmui.widget.QMUITopBarLayout
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
 import com.vise.log.ViseLog
-import kotlinx.android.synthetic.main.fg_add_org.*
 import kotlinx.android.synthetic.main.fg_mine.*
 
 
@@ -43,10 +42,14 @@ class FgMine : BaseFragment() {
         return viewLayout
     }
 
+    override fun onStart() {
+        super.onStart()
+        findMyOrg()
+
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewLayout!!.findViewById<QMUITopBarLayout>(R.id.topbar).setTitle("我的")
-        findMyOrg()
         //获取全部人员列表
         getAllStaffText.setOnClickListener {
 
@@ -55,17 +58,19 @@ class FgMine : BaseFragment() {
             intent.putExtra(Flag.FragmentSwitch, FragmentName.Fg_AllStaff)
             startActivity(intent)
         }
-        addDateLoveUser.setOnClickListener {
+
+        //新增客户数据
+        addLoveUser.setOnClickListener {
             if (BmobUser.isLogin()) {
                 val user: ManagerUser = BmobUser.getCurrentUser(ManagerUser::class.java)
-                Snackbar.make(addDateLoveUser!!, "已经登录：" + user.getUsername(), Snackbar.LENGTH_LONG)
+                Snackbar.make(addLoveUser!!, "已经登录：" + user.getUsername(), Snackbar.LENGTH_LONG)
                         .show()
                 //跳转到下一级
                 var intent = Intent(context, MineSwitchActivity::class.java)
-                intent.putExtra(Flag.FragmentSwitch, FragmentName.FgAddDateSm)
+                intent.putExtra(Flag.FragmentSwitch, FragmentName.FgAddLoveUser)
                 startActivity(intent)
             } else {
-                Snackbar.make(addDateLoveUser!!, "尚未登录", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(addLoveUser!!, "尚未登录", Snackbar.LENGTH_LONG).show()
             }
         }
         //设置邀请码
@@ -90,9 +95,10 @@ class FgMine : BaseFragment() {
                         }
                         .create().show()
             } else {
-                Snackbar.make(addDateLoveUser!!, "尚未登录", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(addLoveUser!!, "尚未登录", Snackbar.LENGTH_LONG).show()
             }
         }
+
         //设置验证码
         setManagerIdText.setOnClickListener {
             if (BmobUser.isLogin()) {
@@ -115,14 +121,26 @@ class FgMine : BaseFragment() {
                         }
                         .create().show()
             } else {
-                Snackbar.make(addDateLoveUser!!, "尚未登录", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(addLoveUser!!, "尚未登录", Snackbar.LENGTH_LONG).show()
             }
         }
-
+        //退出登录
         logonOutText.setOnClickListener {
             BmobUser.logOut()
             if (!BmobUser.isLogin()) {
-                Snackbar.make(addDateLoveUser!!, "退出成功", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(addLoveUser!!, "退出成功", Snackbar.LENGTH_LONG).show()
+
+
+                noLogin.visibility = View.VISIBLE
+                noLogin.setButton("点击登录", {
+
+                    //跳转到下一级
+                    var intent = Intent(context, MineSwitchActivity::class.java)
+                    intent.putExtra(Flag.FragmentSwitch, FragmentName.FgLogin)
+                    startActivity(intent)
+
+                })
+
                 logonOutLinear.visibility = View.GONE
             }
         }
@@ -312,14 +330,14 @@ class FgMine : BaseFragment() {
                     setInviteCode.visibility = View.VISIBLE
                     setManagerIdText.visibility = View.VISIBLE
                     getAllOrgText.visibility = View.VISIBLE
-                    addDateLoveUser.visibility = View.GONE
+                    addLoveUser.visibility = View.GONE
                 }
                 RoleCode.EDITER -> {//录入者
                     setInviteCode.visibility = View.GONE
                     getAllStaffText.visibility = View.GONE
                     getAllOrgText.visibility = View.GONE
                     setManagerIdText.visibility = View.GONE
-                    addDateLoveUser.visibility = View.VISIBLE
+                    addLoveUser.visibility = View.VISIBLE
 
                 }
             }
@@ -332,14 +350,11 @@ class FgMine : BaseFragment() {
         if (BmobUser.isLogin()) {
             noLogin.visibility = View.GONE
             val user: ManagerUser? = BmobUser.getCurrentUser(ManagerUser::class.java)
-            ViseLog.e("user.username==" + user!!.username)
             userNameText.text = user!!.username
-
             var query = BmobQuery<OrgBean>()
             query.addWhereEqualTo("objectId", user.orgId!!.toString())
             query.findObjects(object : FindListener<OrgBean>() {
                 override fun done(p0: MutableList<OrgBean>?, p1: BmobException?) {
-                    ViseLog.e("查询结果=====" + p0!![0].objectId)
                     userNameText.text = user.username.toString()
                     if (p1 == null) {
                         userNameText.text = user.username.toString() +

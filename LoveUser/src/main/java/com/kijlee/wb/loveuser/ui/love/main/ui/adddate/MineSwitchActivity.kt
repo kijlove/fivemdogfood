@@ -10,6 +10,9 @@ import com.kijlee.wb.loveuser.ui.love.main.ui.org.Fg_AllOrg
 import com.kijlee.wb.loveuser.ui.love.main.ui.org.Fg_AllStaff
 import com.kijlee.wb.loveuser.ui.love.main.ui.setting.Fg_PasswordSetting
 
+/**
+ * 我的界面分发
+ */
 class MineSwitchActivity : AppCompatActivity() {
     var flag:String?  = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +20,7 @@ class MineSwitchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_norm)
         flag = intent.getStringExtra(Flag.FragmentSwitch)
         when(flag){
-            FragmentName.FgAddDateSm->{
+            FragmentName.FgAddLoveUser->{
                 var addDateSm = FgAddLoveUser()
                 var fm = supportFragmentManager!!.beginTransaction()
                 var bundle=Bundle()
